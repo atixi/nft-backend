@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/joya-tests",
+      "handler": "joya-test.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/joya-tests/count",
+      "handler": "joya-test.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/joya-tests/:id",
+      "handler": "joya-test.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/joya-tests",
+      "handler": "joya-test.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/joya-tests/:id",
+      "handler": "joya-test.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/joya-tests/:id",
+      "handler": "joya-test.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
