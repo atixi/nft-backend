@@ -12,16 +12,32 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "address": {
+    "userName": {
       "type": "string"
     },
-    "user": {
-      "type": "json"
+    "talentName": {
+      "type": "string"
     },
-    "nftIds": {
-      "collection": "none-fungible-tokens"
+    "talentAvatar": {
+      "type": "string"
     },
-    "collectionIds": {
+    "talentBanner": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "text"
+    },
+    "isVisible": {
+      "type": "boolean"
+    },
+    "isVerified": {
+      "type": "boolean"
+    },
+    "walletAddress": {
+      "type": "string"
+    },
+    "collections": {
+      "via": "talent",
       "collection": "collections"
     }
   }

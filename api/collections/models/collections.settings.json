@@ -12,14 +12,21 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "collectionName": {
+      "type": "string"
+    },
     "slug": {
+      "type": "uid"
+    },
+    "collectionImageURL": {
       "type": "string"
     },
-    "name": {
+    "collectionBanner": {
       "type": "string"
     },
-    "nftIds": {
-      "collection": "none-fungible-tokens"
+    "talent": {
+      "model": "talents",
+      "via": "collections"
     }
   }
 }

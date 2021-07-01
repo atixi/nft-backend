@@ -522,13 +522,31 @@
           "id": {
             "type": "string"
           },
-          "address": {
+          "userName": {
             "type": "string"
           },
-          "user": {
-            "type": "object"
+          "talentName": {
+            "type": "string"
           },
-          "nftIds": {
+          "talentAvatar": {
+            "type": "string"
+          },
+          "talentBanner": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "isVisible": {
+            "type": "boolean"
+          },
+          "isVerified": {
+            "type": "boolean"
+          },
+          "walletAddress": {
+            "type": "string"
+          },
+          "collections": {
             "type": "array",
             "items": {
               "required": [
@@ -538,57 +556,20 @@
                 "id": {
                   "type": "string"
                 },
-                "tokenAddress": {
-                  "type": "string"
-                },
-                "tokenId": {
-                  "type": "string"
-                },
-                "auction": {
-                  "type": "boolean"
-                },
-                "catId": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "nftCatIds": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "collectionIds": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
+                "collectionName": {
                   "type": "string"
                 },
                 "slug": {
+                  "type": "uid"
+                },
+                "collectionImageURL": {
                   "type": "string"
                 },
-                "name": {
+                "collectionBanner": {
                   "type": "string"
                 },
-                "nftIds": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                "talent": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"
@@ -610,19 +591,31 @@
       },
       "NewTalents": {
         "properties": {
-          "address": {
+          "userName": {
             "type": "string"
           },
-          "user": {
-            "type": "object"
+          "talentName": {
+            "type": "string"
           },
-          "nftIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "talentAvatar": {
+            "type": "string"
           },
-          "collectionIds": {
+          "talentBanner": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "isVisible": {
+            "type": "boolean"
+          },
+          "isVerified": {
+            "type": "boolean"
+          },
+          "walletAddress": {
+            "type": "string"
+          },
+          "collections": {
             "type": "array",
             "items": {
               "type": "string"
