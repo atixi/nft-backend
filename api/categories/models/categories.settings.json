@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "name": "categories"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "categoryName": {
+      "type": "string"
+    },
+    "categoryImage": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "nfts": {
+      "collection": "nfts",
+      "via": "categories",
+      "dominant": true
+    }
+  }
+}

@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/talents": {
+    "/nfts": {
       "get": {
         "deprecated": false,
-        "description": "Find all the talents's records",
+        "description": "Find all the nfts's records",
         "responses": {
           "200": {
-            "description": "Retrieve talents document(s)",
+            "description": "Retrieve nfts document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Talents"
+                    "$ref": "#/components/schemas/Nfts"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Nfts"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new talents record",
+        "description": "Create a new nfts record",
         "responses": {
           "200": {
-            "description": "Retrieve talents document(s)",
+            "description": "Retrieve nfts document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Talents"
+                  "$ref": "#/components/schemas/Nfts"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Nfts"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTalents"
+                "$ref": "#/components/schemas/NewNfts"
               }
             }
           }
         }
       }
     },
-    "/talents/count": {
+    "/nfts/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of talents documents",
+        "description": "Retrieve the numver of nfts documents",
         "responses": {
           "200": {
-            "description": "Retrieve talents document(s)",
+            "description": "Retrieve nfts document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Nfts"
         ],
         "parameters": []
       }
     },
-    "/talents/{id}": {
+    "/nfts/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one talents record",
+        "description": "Find one nfts record",
         "responses": {
           "200": {
-            "description": "Retrieve talents document(s)",
+            "description": "Retrieve nfts document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Talents"
+                  "$ref": "#/components/schemas/Nfts"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Nfts"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single talents record",
+        "description": "Update a single nfts record",
         "responses": {
           "200": {
-            "description": "Retrieve talents document(s)",
+            "description": "Retrieve nfts document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Talents"
+                  "$ref": "#/components/schemas/Nfts"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Nfts"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTalents"
+                "$ref": "#/components/schemas/NewNfts"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single talents record",
+        "description": "Delete a single nfts record",
         "responses": {
           "200": {
-            "description": "deletes a single talents based on the ID supplied",
+            "description": "deletes a single nfts based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Nfts"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Talents": {
+      "Nfts": {
         "required": [
           "id"
         ],
@@ -522,31 +522,59 @@
           "id": {
             "type": "string"
           },
-          "userName": {
+          "tokenId": {
             "type": "string"
           },
-          "talentName": {
+          "tokenAddress": {
             "type": "string"
           },
-          "talentAvatar": {
+          "name": {
             "type": "string"
           },
-          "talentBanner": {
-            "type": "string"
-          },
-          "bio": {
-            "type": "string"
-          },
-          "isVisible": {
-            "type": "boolean"
-          },
-          "isVerified": {
-            "type": "boolean"
-          },
-          "walletAddress": {
+          "previewImage": {
             "type": "string"
           },
           "collections": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "collectionName": {
+                "type": "string"
+              },
+              "slug": {
+                "type": "uid"
+              },
+              "collectionImageURL": {
+                "type": "string"
+              },
+              "collectionBanner": {
+                "type": "string"
+              },
+              "talent": {
+                "type": "string"
+              },
+              "nfts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "categories": {
             "type": "array",
             "items": {
               "required": [
@@ -556,20 +584,14 @@
                 "id": {
                   "type": "string"
                 },
-                "collectionName": {
+                "categoryName": {
+                  "type": "string"
+                },
+                "categoryImage": {
                   "type": "string"
                 },
                 "slug": {
                   "type": "uid"
-                },
-                "collectionImageURL": {
-                  "type": "string"
-                },
-                "collectionBanner": {
-                  "type": "string"
-                },
-                "talent": {
-                  "type": "string"
                 },
                 "nfts": {
                   "type": "array",
@@ -595,33 +617,24 @@
           }
         }
       },
-      "NewTalents": {
+      "NewNfts": {
         "properties": {
-          "userName": {
+          "tokenId": {
             "type": "string"
           },
-          "talentName": {
+          "tokenAddress": {
             "type": "string"
           },
-          "talentAvatar": {
+          "name": {
             "type": "string"
           },
-          "talentBanner": {
-            "type": "string"
-          },
-          "bio": {
-            "type": "string"
-          },
-          "isVisible": {
-            "type": "boolean"
-          },
-          "isVerified": {
-            "type": "boolean"
-          },
-          "walletAddress": {
+          "previewImage": {
             "type": "string"
           },
           "collections": {
+            "type": "string"
+          },
+          "categories": {
             "type": "array",
             "items": {
               "type": "string"
@@ -643,7 +656,7 @@
   },
   "tags": [
     {
-      "name": "Talents"
+      "name": "Nfts"
     }
   ]
 }

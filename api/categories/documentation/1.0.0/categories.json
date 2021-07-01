@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/talents": {
+    "/categories": {
       "get": {
         "deprecated": false,
-        "description": "Find all the talents's records",
+        "description": "Find all the categories's records",
         "responses": {
           "200": {
-            "description": "Retrieve talents document(s)",
+            "description": "Retrieve categories document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Talents"
+                    "$ref": "#/components/schemas/Categories"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Categories"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new talents record",
+        "description": "Create a new categories record",
         "responses": {
           "200": {
-            "description": "Retrieve talents document(s)",
+            "description": "Retrieve categories document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Talents"
+                  "$ref": "#/components/schemas/Categories"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Categories"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTalents"
+                "$ref": "#/components/schemas/NewCategories"
               }
             }
           }
         }
       }
     },
-    "/talents/count": {
+    "/categories/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of talents documents",
+        "description": "Retrieve the numver of categories documents",
         "responses": {
           "200": {
-            "description": "Retrieve talents document(s)",
+            "description": "Retrieve categories document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Categories"
         ],
         "parameters": []
       }
     },
-    "/talents/{id}": {
+    "/categories/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one talents record",
+        "description": "Find one categories record",
         "responses": {
           "200": {
-            "description": "Retrieve talents document(s)",
+            "description": "Retrieve categories document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Talents"
+                  "$ref": "#/components/schemas/Categories"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Categories"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single talents record",
+        "description": "Update a single categories record",
         "responses": {
           "200": {
-            "description": "Retrieve talents document(s)",
+            "description": "Retrieve categories document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Talents"
+                  "$ref": "#/components/schemas/Categories"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Categories"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTalents"
+                "$ref": "#/components/schemas/NewCategories"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single talents record",
+        "description": "Delete a single categories record",
         "responses": {
           "200": {
-            "description": "deletes a single talents based on the ID supplied",
+            "description": "deletes a single categories based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Talents"
+          "Categories"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Talents": {
+      "Categories": {
         "required": [
           "id"
         ],
@@ -522,31 +522,16 @@
           "id": {
             "type": "string"
           },
-          "userName": {
+          "categoryName": {
             "type": "string"
           },
-          "talentName": {
+          "categoryImage": {
             "type": "string"
           },
-          "talentAvatar": {
-            "type": "string"
+          "slug": {
+            "type": "uid"
           },
-          "talentBanner": {
-            "type": "string"
-          },
-          "bio": {
-            "type": "string"
-          },
-          "isVisible": {
-            "type": "boolean"
-          },
-          "isVerified": {
-            "type": "boolean"
-          },
-          "walletAddress": {
-            "type": "string"
-          },
-          "collections": {
+          "nfts": {
             "type": "array",
             "items": {
               "required": [
@@ -556,22 +541,22 @@
                 "id": {
                   "type": "string"
                 },
-                "collectionName": {
+                "tokenId": {
                   "type": "string"
                 },
-                "slug": {
-                  "type": "uid"
-                },
-                "collectionImageURL": {
+                "tokenAddress": {
                   "type": "string"
                 },
-                "collectionBanner": {
+                "name": {
                   "type": "string"
                 },
-                "talent": {
+                "previewImage": {
                   "type": "string"
                 },
-                "nfts": {
+                "collections": {
+                  "type": "string"
+                },
+                "categories": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -595,33 +580,18 @@
           }
         }
       },
-      "NewTalents": {
+      "NewCategories": {
         "properties": {
-          "userName": {
+          "categoryName": {
             "type": "string"
           },
-          "talentName": {
+          "categoryImage": {
             "type": "string"
           },
-          "talentAvatar": {
-            "type": "string"
+          "slug": {
+            "type": "uid"
           },
-          "talentBanner": {
-            "type": "string"
-          },
-          "bio": {
-            "type": "string"
-          },
-          "isVisible": {
-            "type": "boolean"
-          },
-          "isVerified": {
-            "type": "boolean"
-          },
-          "walletAddress": {
-            "type": "string"
-          },
-          "collections": {
+          "nfts": {
             "type": "array",
             "items": {
               "type": "string"
@@ -643,7 +613,7 @@
   },
   "tags": [
     {
-      "name": "Talents"
+      "name": "Categories"
     }
   ]
 }

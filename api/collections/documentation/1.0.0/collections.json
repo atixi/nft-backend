@@ -583,6 +583,49 @@
               }
             }
           },
+          "nfts": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "tokenId": {
+                  "type": "string"
+                },
+                "tokenAddress": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "previewImage": {
+                  "type": "string"
+                },
+                "collections": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -605,6 +648,12 @@
           },
           "talent": {
             "type": "string"
+          },
+          "nfts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "published_at": {
             "type": "string",

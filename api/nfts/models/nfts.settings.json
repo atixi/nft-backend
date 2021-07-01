@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "collections",
+  "collectionName": "nfts",
   "info": {
-    "name": "collections",
+    "name": "nfts",
     "description": ""
   },
   "options": {
@@ -12,25 +12,25 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "collectionName": {
+    "tokenId": {
       "type": "string"
     },
-    "slug": {
-      "type": "uid"
-    },
-    "collectionImageURL": {
+    "tokenAddress": {
       "type": "string"
     },
-    "collectionBanner": {
+    "name": {
       "type": "string"
     },
-    "talent": {
-      "model": "talents",
-      "via": "collections"
+    "previewImage": {
+      "type": "string"
     },
-    "nfts": {
-      "via": "collections",
-      "collection": "nfts"
+    "collections": {
+      "model": "collections",
+      "via": "nfts"
+    },
+    "categories": {
+      "via": "nfts",
+      "collection": "categories"
     }
   }
 }
