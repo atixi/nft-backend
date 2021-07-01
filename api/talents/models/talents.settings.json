@@ -18,10 +18,10 @@
     "user": {
       "type": "json"
     },
-    "none_fungible_tokens": {
+    "nftIds": {
       "collection": "none-fungible-tokens"
     },
-    "collections": {
+    "collectionIds": {
       "collection": "collections"
     }
   }

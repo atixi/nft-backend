@@ -528,7 +528,7 @@
           "icon": {
             "type": "string"
           },
-          "none_fungible_token": {
+          "nftIds": {
             "required": [
               "id"
             ],
@@ -542,16 +542,16 @@
               "tokenId": {
                 "type": "string"
               },
-              "categories": {
+              "auction": {
+                "type": "boolean"
+              },
+              "catId": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "auction": {
-                "type": "boolean"
-              },
-              "nft_cat": {
+              "nftCatIds": {
                 "type": "string"
               },
               "published_at": {
@@ -565,7 +565,7 @@
               }
             }
           },
-          "nft_cat": {
+          "nftCatId": {
             "required": [
               "id"
             ],
@@ -573,10 +573,10 @@
               "id": {
                 "type": "string"
               },
-              "category_id": {
+              "nftIds": {
                 "type": "string"
               },
-              "nftIds": {
+              "categoryIt": {
                 "type": "string"
               },
               "published_at": {
@@ -604,10 +604,10 @@
           "icon": {
             "type": "string"
           },
-          "none_fungible_token": {
+          "nftIds": {
             "type": "string"
           },
-          "nft_cat": {
+          "nftCatId": {
             "type": "string"
           },
           "published_at": {

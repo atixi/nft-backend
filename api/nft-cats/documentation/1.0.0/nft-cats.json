@@ -535,37 +535,6 @@
           "id": {
             "type": "string"
           },
-          "category_id": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "icon": {
-                "type": "string"
-              },
-              "none_fungible_token": {
-                "type": "string"
-              },
-              "nft_cat": {
-                "type": "string"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "nftIds": {
             "required": [
               "id"
@@ -580,16 +549,47 @@
               "tokenId": {
                 "type": "string"
               },
-              "categories": {
+              "auction": {
+                "type": "boolean"
+              },
+              "catId": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "auction": {
-                "type": "boolean"
+              "nftCatIds": {
+                "type": "string"
               },
-              "nft_cat": {
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "categoryIt": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              },
+              "nftIds": {
+                "type": "string"
+              },
+              "nftCatId": {
                 "type": "string"
               },
               "published_at": {
@@ -611,10 +611,10 @@
       },
       "NewNft-cats": {
         "properties": {
-          "category_id": {
+          "nftIds": {
             "type": "string"
           },
-          "nftIds": {
+          "categoryIt": {
             "type": "string"
           },
           "published_at": {

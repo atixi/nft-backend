@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "none_fungible_tokens",
+  "collectionName": "nfts",
   "info": {
     "name": "nfts",
     "description": ""
@@ -18,14 +18,14 @@
     "tokenId": {
       "type": "string"
     },
-    "categories": {
-      "collection": "categories",
-      "via": "none_fungible_token"
-    },
     "auction": {
       "type": "boolean"
     },
-    "nft_cat": {
+    "catId": {
+      "via": "nftIds",
+      "collection": "categories"
+    },
+    "nftCatIds": {
       "via": "nftIds",
       "model": "nft-cats"
     }

@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "categories",
   "info": {
-    "name": "categories"
+    "name": "categories",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -17,12 +18,12 @@
     "icon": {
       "type": "string"
     },
-    "none_fungible_token": {
-      "via": "categories",
+    "nftIds": {
+      "via": "catId",
       "model": "none-fungible-tokens"
     },
-    "nft_cat": {
-      "via": "category_id",
+    "nftCatId": {
+      "via": "categoryIt",
       "model": "nft-cats"
     }
   }
