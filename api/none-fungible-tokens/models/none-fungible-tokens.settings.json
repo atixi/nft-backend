@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "none_fungible_tokens",
   "info": {
-    "name": "None-Fungible-Tokens"
+    "name": "nfts",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -23,6 +24,10 @@
     },
     "auction": {
       "type": "boolean"
+    },
+    "nft_cat": {
+      "via": "nftIds",
+      "model": "nft-cats"
     }
   }
 }

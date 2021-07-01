@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nft_cats",
+  "info": {
+    "name": "nftCats"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "category_id": {
+      "model": "categories",
+      "via": "nft_cat"
+    },
+    "nftIds": {
+      "via": "nft_cat",
+      "model": "none-fungible-tokens"
+    }
+  }
+}

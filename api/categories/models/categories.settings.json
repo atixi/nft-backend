@@ -20,6 +20,10 @@
     "none_fungible_token": {
       "via": "categories",
       "model": "none-fungible-tokens"
+    },
+    "nft_cat": {
+      "via": "category_id",
+      "model": "nft-cats"
     }
   }
 }
