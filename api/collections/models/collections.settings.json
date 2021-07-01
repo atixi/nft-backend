@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "collections",
   "info": {
-    "name": "collections"
+    "name": "collections",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -17,7 +18,7 @@
     "name": {
       "type": "string"
     },
-    "none_fungible_tokens": {
+    "nftIds": {
       "collection": "none-fungible-tokens"
     }
   }

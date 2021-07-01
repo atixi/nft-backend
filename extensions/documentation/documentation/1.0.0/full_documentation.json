@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/01/2021 10:23:23 AM"
+    "x-generation-date": "07/01/2021 10:55:39 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5501,7 +5501,7 @@
           "name": {
             "type": "string"
           },
-          "none_fungible_tokens": {
+          "nftIds": {
             "type": "array",
             "items": {
               "required": [
@@ -5555,7 +5555,7 @@
           "name": {
             "type": "string"
           },
-          "none_fungible_tokens": {
+          "nftIds": {
             "type": "array",
             "items": {
               "type": "string"
@@ -5905,7 +5905,7 @@
                 "name": {
                   "type": "string"
                 },
-                "none_fungible_tokens": {
+                "nftIds": {
                   "type": "array",
                   "items": {
                     "type": "string"

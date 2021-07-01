@@ -528,7 +528,7 @@
           "name": {
             "type": "string"
           },
-          "none_fungible_tokens": {
+          "nftIds": {
             "type": "array",
             "items": {
               "required": [
@@ -582,7 +582,7 @@
           "name": {
             "type": "string"
           },
-          "none_fungible_tokens": {
+          "nftIds": {
             "type": "array",
             "items": {
               "type": "string"
