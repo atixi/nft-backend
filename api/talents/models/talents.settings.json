@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "talents",
+  "info": {
+    "name": "talents",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "address": {
+      "type": "string"
+    },
+    "user": {
+      "type": "json"
+    },
+    "none_fungible_tokens": {
+      "collection": "none-fungible-tokens"
+    },
+    "collections": {
+      "collection": "collections"
+    }
+  }
+}

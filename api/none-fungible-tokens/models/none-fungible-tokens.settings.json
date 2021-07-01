@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "none_fungible_tokens",
+  "info": {
+    "name": "None-Fungible-Tokens"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tokenAddress": {
+      "type": "string"
+    },
+    "tokenId": {
+      "type": "string"
+    },
+    "categories": {
+      "collection": "categories",
+      "via": "none_fungible_token"
+    },
+    "auction": {
+      "type": "boolean"
+    }
+  }
+}
