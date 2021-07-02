@@ -21,16 +21,25 @@
     "name": {
       "type": "string"
     },
-    "previewImage": {
-      "type": "string"
-    },
     "collections": {
-      "model": "collections",
-      "via": "nfts"
+      "via": "nfts",
+      "model": "collections"
     },
     "categories": {
       "via": "nfts",
       "collection": "categories"
+    },
+    "previewImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

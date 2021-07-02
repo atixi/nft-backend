@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/01/2021 10:23:23 PM"
+    "x-generation-date": "07/02/2021 9:56:40 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4329,9 +4329,6 @@
           "categoryName": {
             "type": "string"
           },
-          "categoryImage": {
-            "type": "string"
-          },
           "slug": {
             "type": "uid"
           },
@@ -4354,9 +4351,6 @@
                 "name": {
                   "type": "string"
                 },
-                "previewImage": {
-                  "type": "string"
-                },
                 "collections": {
                   "type": "string"
                 },
@@ -4365,6 +4359,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "previewImage": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"
@@ -4378,6 +4375,73 @@
               }
             }
           },
+          "categoryImage": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -4387,9 +4451,6 @@
       "NewCategories": {
         "properties": {
           "categoryName": {
-            "type": "string"
-          },
-          "categoryImage": {
             "type": "string"
           },
           "slug": {
@@ -4427,12 +4488,6 @@
           "slug": {
             "type": "uid"
           },
-          "collectionImageURL": {
-            "type": "string"
-          },
-          "collectionBanner": {
-            "type": "string"
-          },
           "talent": {
             "required": [
               "id"
@@ -4445,12 +4500,6 @@
                 "type": "string"
               },
               "talentName": {
-                "type": "string"
-              },
-              "talentAvatar": {
-                "type": "string"
-              },
-              "talentBanner": {
                 "type": "string"
               },
               "bio": {
@@ -4470,6 +4519,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "talentAvatar": {
+                "type": "string"
+              },
+              "talentBanner": {
+                "type": "string"
               },
               "published_at": {
                 "type": "string"
@@ -4501,9 +4556,6 @@
                 "name": {
                   "type": "string"
                 },
-                "previewImage": {
-                  "type": "string"
-                },
                 "collections": {
                   "type": "string"
                 },
@@ -4512,6 +4564,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "previewImage": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"
@@ -4522,6 +4577,140 @@
                 "updated_by": {
                   "type": "string"
                 }
+              }
+            }
+          },
+          "collectionImageURL": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "collectionBanner": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -4538,12 +4727,6 @@
           },
           "slug": {
             "type": "uid"
-          },
-          "collectionImageURL": {
-            "type": "string"
-          },
-          "collectionBanner": {
-            "type": "string"
           },
           "talent": {
             "type": "string"
@@ -4583,9 +4766,6 @@
           "name": {
             "type": "string"
           },
-          "previewImage": {
-            "type": "string"
-          },
           "collections": {
             "required": [
               "id"
@@ -4600,12 +4780,6 @@
               "slug": {
                 "type": "uid"
               },
-              "collectionImageURL": {
-                "type": "string"
-              },
-              "collectionBanner": {
-                "type": "string"
-              },
               "talent": {
                 "type": "string"
               },
@@ -4614,6 +4788,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "collectionImageURL": {
+                "type": "string"
+              },
+              "collectionBanner": {
+                "type": "string"
               },
               "published_at": {
                 "type": "string"
@@ -4639,9 +4819,6 @@
                 "categoryName": {
                   "type": "string"
                 },
-                "categoryImage": {
-                  "type": "string"
-                },
                 "slug": {
                   "type": "uid"
                 },
@@ -4650,6 +4827,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "categoryImage": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"
@@ -4660,6 +4840,73 @@
                 "updated_by": {
                   "type": "string"
                 }
+              }
+            }
+          },
+          "previewImage": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -4678,9 +4925,6 @@
             "type": "string"
           },
           "name": {
-            "type": "string"
-          },
-          "previewImage": {
             "type": "string"
           },
           "collections": {
@@ -4718,12 +4962,6 @@
           "talentName": {
             "type": "string"
           },
-          "talentAvatar": {
-            "type": "string"
-          },
-          "talentBanner": {
-            "type": "string"
-          },
           "bio": {
             "type": "string"
           },
@@ -4752,12 +4990,6 @@
                 "slug": {
                   "type": "uid"
                 },
-                "collectionImageURL": {
-                  "type": "string"
-                },
-                "collectionBanner": {
-                  "type": "string"
-                },
                 "talent": {
                   "type": "string"
                 },
@@ -4766,6 +4998,12 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "collectionImageURL": {
+                  "type": "string"
+                },
+                "collectionBanner": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"
@@ -4776,6 +5014,140 @@
                 "updated_by": {
                   "type": "string"
                 }
+              }
+            }
+          },
+          "talentAvatar": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "talentBanner": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -4791,12 +5163,6 @@
             "type": "string"
           },
           "talentName": {
-            "type": "string"
-          },
-          "talentAvatar": {
-            "type": "string"
-          },
-          "talentBanner": {
             "type": "string"
           },
           "bio": {

@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "categories",
   "info": {
-    "name": "categories"
+    "name": "categories",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -14,16 +15,25 @@
     "categoryName": {
       "type": "string"
     },
-    "categoryImage": {
-      "type": "string"
-    },
     "slug": {
       "type": "uid"
     },
     "nfts": {
-      "collection": "nfts",
       "via": "categories",
+      "collection": "nfts",
       "dominant": true
+    },
+    "categoryImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

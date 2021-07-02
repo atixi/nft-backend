@@ -18,12 +18,6 @@
     "talentName": {
       "type": "string"
     },
-    "talentAvatar": {
-      "type": "string"
-    },
-    "talentBanner": {
-      "type": "string"
-    },
     "bio": {
       "type": "text"
     },
@@ -39,6 +33,30 @@
     "collections": {
       "via": "talent",
       "collection": "collections"
+    },
+    "talentAvatar": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "talentBanner": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

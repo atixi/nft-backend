@@ -18,19 +18,37 @@
     "slug": {
       "type": "uid"
     },
-    "collectionImageURL": {
-      "type": "string"
-    },
-    "collectionBanner": {
-      "type": "string"
-    },
     "talent": {
-      "model": "talents",
-      "via": "collections"
+      "via": "collections",
+      "model": "talents"
     },
     "nfts": {
       "via": "collections",
       "collection": "nfts"
+    },
+    "collectionImageURL": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "collectionBanner": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }
