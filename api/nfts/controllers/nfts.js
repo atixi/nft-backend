@@ -1,8 +1,14 @@
 'use strict';
+module.exports = {
+  async findOne(ctx) {
 
-/**
- * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
- * to customize this controller
- */
+  const seaport = strapi.config.functions.openSeaApi.openSea();
+      const {id, address} = ctx.params;
 
-module.exports = {};
+      const OpenSeaAsset = await seaport.api.getAsset({
+          tokenAddress: address,
+          tokenId: id
+        })
+        return OpenSeaAsset;
+      },
+};
