@@ -1,9 +1,8 @@
-
 const Web3 = require('web3');
 const { OpenSeaPort, Network } = require('opensea-js');
 
 module.exports = {
- openSea()
+  seaport()
 {
     const provider = new Web3.providers.HttpProvider('https://mainnet.infura.io/c2dde5d7c0a0465a8e994f711a3a3c31')
     const seaport = new OpenSeaPort(provider, {
