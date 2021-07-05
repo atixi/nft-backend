@@ -4459,6 +4459,9 @@
               }
             }
           },
+          "icon": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -4478,6 +4481,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "icon": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -4855,6 +4861,9 @@
                   }
                 },
                 "categoryImage": {
+                  "type": "string"
+                },
+                "icon": {
                   "type": "string"
                 },
                 "published_at": {
