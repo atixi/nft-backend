@@ -687,6 +687,61 @@
               }
             }
           },
+          "talent": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "userName": {
+                "type": "string"
+              },
+              "talentName": {
+                "type": "string"
+              },
+              "bio": {
+                "type": "string"
+              },
+              "isVisible": {
+                "type": "boolean"
+              },
+              "isVerified": {
+                "type": "boolean"
+              },
+              "walletAddress": {
+                "type": "string"
+              },
+              "collections": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "talentAvatar": {
+                "type": "string"
+              },
+              "talentBanner": {
+                "type": "string"
+              },
+              "nfts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -712,6 +767,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "talent": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
