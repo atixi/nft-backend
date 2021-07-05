@@ -40,6 +40,10 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "talent": {
+      "model": "talents",
+      "via": "nfts"
     }
   }
 }

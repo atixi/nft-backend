@@ -566,6 +566,12 @@
               "talentBanner": {
                 "type": "string"
               },
+              "nfts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -606,6 +612,9 @@
                   }
                 },
                 "previewImage": {
+                  "type": "string"
+                },
+                "talent": {
                   "type": "string"
                 },
                 "published_at": {

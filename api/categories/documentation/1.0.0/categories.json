@@ -559,6 +559,9 @@
                 "previewImage": {
                   "type": "string"
                 },
+                "talent": {
+                  "type": "string"
+                },
                 "published_at": {
                   "type": "string"
                 },

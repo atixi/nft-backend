@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/02/2021 9:56:40 AM"
+    "x-generation-date": "07/05/2021 11:13:39 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4375,6 +4375,9 @@
                 "previewImage": {
                   "type": "string"
                 },
+                "talent": {
+                  "type": "string"
+                },
                 "published_at": {
                   "type": "string"
                 },
@@ -4538,6 +4541,12 @@
               "talentBanner": {
                 "type": "string"
               },
+              "nfts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -4578,6 +4587,9 @@
                   }
                 },
                 "previewImage": {
+                  "type": "string"
+                },
+                "talent": {
                   "type": "string"
                 },
                 "published_at": {
@@ -4922,6 +4934,61 @@
               }
             }
           },
+          "talent": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "userName": {
+                "type": "string"
+              },
+              "talentName": {
+                "type": "string"
+              },
+              "bio": {
+                "type": "string"
+              },
+              "isVisible": {
+                "type": "boolean"
+              },
+              "isVerified": {
+                "type": "boolean"
+              },
+              "walletAddress": {
+                "type": "string"
+              },
+              "collections": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "talentAvatar": {
+                "type": "string"
+              },
+              "talentBanner": {
+                "type": "string"
+              },
+              "nfts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -4947,6 +5014,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "talent": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -5163,6 +5233,52 @@
               }
             }
           },
+          "nfts": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "tokenId": {
+                  "type": "string"
+                },
+                "tokenAddress": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "collections": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "previewImage": {
+                  "type": "string"
+                },
+                "talent": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -5190,6 +5306,12 @@
             "type": "string"
           },
           "collections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "nfts": {
             "type": "array",
             "items": {
               "type": "string"
