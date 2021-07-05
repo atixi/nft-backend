@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/collections/:id",
+      "path": "/collections/:slug",
       "handler": "collections.findOne",
       "config": {
         "policies": []
