@@ -11,7 +11,7 @@ const seaport = strapi.config.functions.openSeaApi.seaport();
 module.exports = {
   async findOne(ctx) {
     const { slug } = ctx.params;
-    // const entity = await strapi.services.collections.findOne({ slug });
+    const entity = await strapi.services.collections.findOne({ slug });
     // const entity = await axios.get(
     //   `https://api.opensea.io/api/v1/assets?collection=${slug}`
     // );
@@ -19,7 +19,7 @@ module.exports = {
       collection: slug,
     });
     // const entity = `https://api.opensea.io/api/v1/assets?collection=${slug}`;
-    return assets;
+    return { ...entity, assets };
     // return sanitizeEntity(entity, { model: strapi.models.collections });
   },
 };
