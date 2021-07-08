@@ -17,9 +17,11 @@ module.exports = {
     // );
     const { assets } = await seaport.api.getAssets({
       collection: slug,
+      limit: 50,
     });
+
     // const entity = `https://api.opensea.io/api/v1/assets?collection=${slug}`;
-    return { ...entity, assets };
+    return { ...entity, assets, onSales };
     // return sanitizeEntity(entity, { model: strapi.models.collections });
   },
 };
