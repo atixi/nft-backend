@@ -19,9 +19,13 @@ module.exports = {
       collection: slug,
       limit: 50,
     });
-
+    const onsales = await seaport.api.get("/events", {
+      collection_slug: slug,
+      event_type: "successful",
+      limit: 50,
+    });
     // const entity = `https://api.opensea.io/api/v1/assets?collection=${slug}`;
-    return { ...entity, assets };
+    return { ...entity, assets, onsales };
     // return sanitizeEntity(entity, { model: strapi.models.collections });
   },
 };
