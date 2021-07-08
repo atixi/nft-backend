@@ -4,18 +4,29 @@ const axios = require("axios")
 const seaport = strapi.config.functions.openSeaApi.seaport();
 module.exports = {
   async findOne(ctx) {
-      const {id, address} = ctx.params;
+      const {id, address, type} = ctx.params;
             // return await axios.get("https://api.opensea.io/api/v1/asset///")
           // let {categories} = await strapi.services.nfts.findOne({id}/{address});
-
-      const OpenSeaAsset = await seaport.api.getAsset({
+      if(type == "single")
+      {
+        const OpenSeaAsset = await seaport.api.getAsset({
           tokenAddress: address,
           tokenId: id
         })
-    
-
-         
         return OpenSeaAsset
+      }
+      else if(type == "orders")
+      {
+        // return ctx.params;
+        const orders  = await seaport.api.getAsset({
+          tokenAddress: address,
+          tokenId: id,
+                  // side: 1
+                });
+
+                return orders;
+      }
+     
       },
 
       
