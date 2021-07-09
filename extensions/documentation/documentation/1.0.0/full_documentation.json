@@ -1380,7 +1380,7 @@
         "parameters": []
       }
     },
-    "/nfts/{id}/{address}/{type}": {
+    "/nfts/{id}/{address}": {
       "get": {
         "deprecated": false,
         "description": "Find one nfts record",
@@ -1443,16 +1443,6 @@
           },
           {
             "name": "address",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
             "in": "path",
             "description": "",
             "deprecated": false,
