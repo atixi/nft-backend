@@ -311,7 +311,7 @@
         "parameters": []
       }
     },
-    "/talents/{id}": {
+    "/talents/{userName}": {
       "get": {
         "deprecated": false,
         "description": "Find one talents record",
@@ -363,7 +363,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "userName",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -373,7 +373,9 @@
             }
           }
         ]
-      },
+      }
+    },
+    "/talents/{id}": {
       "put": {
         "deprecated": false,
         "description": "Update a single talents record",

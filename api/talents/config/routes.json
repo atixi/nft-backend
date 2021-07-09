@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/talents/:id",
+      "path": "/talents/:userName",
       "handler": "talents.findOne",
       "config": {
         "policies": []

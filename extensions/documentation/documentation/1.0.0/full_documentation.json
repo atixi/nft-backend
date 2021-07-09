@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/05/2021 1:01:12 PM"
+    "x-generation-date": "07/09/2021 3:19:45 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1903,7 +1903,7 @@
         "parameters": []
       }
     },
-    "/talents/{id}": {
+    "/talents/{userName}": {
       "get": {
         "deprecated": false,
         "description": "Find one talents record",
@@ -1955,7 +1955,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "userName",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -1965,7 +1965,9 @@
             }
           }
         ]
-      },
+      }
+    },
+    "/talents/{id}": {
       "put": {
         "deprecated": false,
         "description": "Update a single talents record",
