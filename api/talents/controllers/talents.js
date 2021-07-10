@@ -10,7 +10,7 @@ module.exports = {
     const { userName } = ctx.params;
     const entity = await strapi.services.talents.findOne({ userName });
 
-    return { entity };
+    return { ...entity };
     // return sanitizeEntity(entity, { model: strapi.models.collections });
   },
 };
