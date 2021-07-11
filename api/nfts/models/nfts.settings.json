@@ -44,6 +44,9 @@
     "talent": {
       "model": "talents",
       "via": "nfts"
+    },
+    "metadata": {
+      "type": "json"
     }
   }
 }

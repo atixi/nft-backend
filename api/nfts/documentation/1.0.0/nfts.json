@@ -745,6 +745,9 @@
               }
             }
           },
+          "metadata": {
+            "type": "object"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -773,6 +776,9 @@
           },
           "talent": {
             "type": "string"
+          },
+          "metadata": {
+            "type": "object"
           },
           "published_at": {
             "type": "string",
