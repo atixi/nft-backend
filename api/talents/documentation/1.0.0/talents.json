@@ -753,6 +753,9 @@
                 "talent": {
                   "type": "string"
                 },
+                "metadata": {
+                  "type": "object"
+                },
                 "published_at": {
                   "type": "string"
                 },
