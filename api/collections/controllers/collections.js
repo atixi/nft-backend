@@ -13,7 +13,7 @@ module.exports = {
     // return filter;
     const entity = await strapi.services.collections.findOne({ slug });
     const { offset } = ctx.query;
-    const assets = await seaport.api.getAssets({
+    const { assets } = await seaport.api.getAssets({
       collection: slug,
       limit: 10,
       offset: offset,
