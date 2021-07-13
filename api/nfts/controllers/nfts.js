@@ -37,13 +37,22 @@ module.exports = {
 
       
       async find(ctx) {
-        const owners = [
-          "0xe5609a6984ece86cb5ab48b13c3ba5a55d173da8",
-          "0xff6539f953eb682d442c70ae0a9e186dd9668ca2",
-        ];          
-     
+        // const owners = [
+        //   "0xe5609a6984ece86cb5ab48b13c3ba5a55d173da8",
+        //   "0xff6539f953eb682d442c70ae0a9e186dd9668ca2",
+        // ];      
+        let owners=[];
+        const talents = await strapi.services.talents.find();    
+        for(let talent in talents)
+        {
+          owners.push(talents[talent].walletAddress);
+        }
+        // return owners;
         const result = await getAssetsByOwners(owners);
        const data = mergeAssetsByOwners(result);
         return data;
-    }
+    },
+    async findAuction(ctx) {
+      return "df"
+    },
 };

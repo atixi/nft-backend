@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/nfts/auction",
+      "handler": "nfts.findAuction",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/nfts",
       "handler": "nfts.create",
