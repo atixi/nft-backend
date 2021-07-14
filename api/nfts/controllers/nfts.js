@@ -1,6 +1,4 @@
 'use strict';
-const { sanitizeEntity } = require('strapi-utils');
-const axios = require("axios")
 const seaport = strapi.config.functions.openSeaApi.seaport();
 const getAssetsByOwner = (owner) => {
   return seaport.api.getAssets({
@@ -36,14 +34,26 @@ module.exports = {
       },
 
       
-      async find(ctx) {
-        const owners = [
-          "0xe5609a6984ece86cb5ab48b13c3ba5a55d173da8",
-          "0xff6539f953eb682d442c70ae0a9e186dd9668ca2",
-        ];          
-     
+      async find(ctx) {   
+        let owners=[];
+        const talents = await strapi.services.talents.find();    
+        for(let talent in talents)
+        {
+          owners.push(talents[talent].walletAddress);
+        }
+        // return owners;
         const result = await getAssetsByOwners(owners);
        const data = mergeAssetsByOwners(result);
         return data;
-    }
+    },
+    async findAuction(ctx) {
+      const { orders } = await seaport.api.getOrders(
+        // {
+        // asset_contract_address: address,
+        // token_id: id,
+        // side: 1
+        // }
+      )
+      return orders
+    },
 };
