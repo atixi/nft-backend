@@ -1,6 +1,5 @@
 "use strict";
 
-const { default: axios } = require("axios");
 const seaport = strapi.config.functions.openSeaApi.seaport();
 // import axios from "axios";
 /**
@@ -11,21 +10,15 @@ const seaport = strapi.config.functions.openSeaApi.seaport();
 module.exports = {
   async findOne(ctx) {
     const { slug } = ctx.params;
+    // return filter;
     const entity = await strapi.services.collections.findOne({ slug });
-    // const entity = await axios.get(
-    //   `https://api.opensea.io/api/v1/assets?collection=${slug}`
-    // );
+    const { offset } = ctx.query;
     const { assets } = await seaport.api.getAssets({
       collection: slug,
-      limit: 50,
+      limit: 10,
+      offset: offset,
     });
-    const onsales = await seaport.api.get("/events", {
-      collection_slug: slug,
-      event_type: "successful",
-      limit: 50,
-    });
-    // const entity = `https://api.opensea.io/api/v1/assets?collection=${slug}`;
-    return { ...entity, assets, onsales };
-    // return sanitizeEntity(entity, { model: strapi.models.collections });
+
+    return { ...entity, assets };
   },
 };
