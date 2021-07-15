@@ -48,6 +48,10 @@ module.exports = {
     },
     async findAuction(ctx) {
       const { orders } = await seaport.api.getOrders(
+        {
+          is_expired: false,
+          // sale_kind: 2
+        }
         // {
         // asset_contract_address: address,
         // token_id: id,
