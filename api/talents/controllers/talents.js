@@ -11,6 +11,7 @@ async function fetchAssets(walletAddress) {
   });
   return assets;
 }
+
 module.exports = {
   async findOne(ctx) {
     const { userName } = ctx.params;
@@ -24,20 +25,23 @@ module.exports = {
     return { ...entity, assets };
     // return sanitizeEntity(entity, { model: strapi.models.collections });
   },
+
   async find(ctx) {
     const tals = await strapi.services.talents.find(ctx.query);
     let talents = [];
-
-    // const data = tals.map((tal) =>
-    //   fetchAssets("0xe5609a6984ece86cb5ab48b13c3ba5a55d173da8")
-    // );
-    // return data;
 
     for (let i = 0; i < tals.length; i++) {
       const data = await fetchAssets(await tals[i].walletAddress);
       talents = [
         ...talents,
-        { talentName: tals[i].talentName, assets: [...data] },
+        {
+          userName: tals[i].userName,
+          talentName: tals[i].talentName,
+          walletAddress: tals[i].walletAddress,
+          bio: tals[i].bio,
+          talentAvatar: { url: tals[i].talentAvatar.url },
+          assets: [...data],
+        },
       ];
     }
     return talents;
