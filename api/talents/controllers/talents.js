@@ -7,7 +7,7 @@ const seaport = strapi.config.functions.openSeaApi.seaport();
 async function fetchAssets(walletAddress) {
   const { assets } = await seaport.api.getAssets({
     owner: walletAddress,
-    limit: 4,
+    limit: 100,
   });
   return assets;
 }
