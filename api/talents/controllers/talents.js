@@ -46,4 +46,19 @@ module.exports = {
     }
     return talents;
   },
+
+  async search(ctx) {
+    const { searchWord } = ctx.params;
+    const talents = await strapi.services.talents.find({
+      talentName_contains: searchWord,
+    });
+    const collections = await strapi.services.collections.find({
+      collectionName_contains: searchWord,
+    });
+    const assets = await strapi.services.nfts.find({
+      name_contains: searchWord,
+    });
+
+    return { talents: talents, collections: collections, assets: assets };
+  },
 };
