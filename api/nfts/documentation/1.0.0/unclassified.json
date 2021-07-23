@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/nfts/liveAuction": {
+    "/nfts/nfts": {
       "get": {
         "deprecated": false,
         "description": "",
