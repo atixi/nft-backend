@@ -62,3 +62,4 @@ module.exports = {
     return { talents: talents, collections: collections, assets: assets };
   },
 };
+

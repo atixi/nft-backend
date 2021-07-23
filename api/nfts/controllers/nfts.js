@@ -1,16 +1,16 @@
-'use strict';
+"use strict";
 const seaport = strapi.config.functions.openSeaApi.seaport();
 const getAssetsByOwner = (owner) => {
   return seaport.api.getAssets({
     owner,
-    limit: 40
+    limit: 40,
   });
 };
-const getAssetsByOwners = async(owners) => {
+const getAssetsByOwners = async (owners) => {
   const promises = [];
   for (let i = 0; i < owners.length; i++) {
-    const data = await getAssetsByOwner(owners[i])
-    promises.push( data);
+    const data = await getAssetsByOwner(owners[i]);
+    promises.push(data);
   }
   return Promise.allSettled(promises);
 };
@@ -24,40 +24,41 @@ const mergeAssetsByOwners = (result) => {
 
 module.exports = {
   async findOne(ctx) {
-      const {id, address} = ctx.params;
-        const OpenSeaAsset = await seaport.api.getAsset({
-          tokenAddress: address,
-          tokenId: id
-        })
-        return OpenSeaAsset
-     
-      },
+    const { id, address } = ctx.params;
+    const OpenSeaAsset = await seaport.api.getAsset({
+      tokenAddress: address,
+      tokenId: id,
+    });
+    return OpenSeaAsset;
+  },
 
-      
-      async find(ctx) {   
-        let owners=[];
-        const talents = await strapi.services.talents.find();    
-        for(let talent in talents)
-        {
-          owners.push(talents[talent].walletAddress);
-        }
-        // return owners;
-        const result = await getAssetsByOwners(owners);
-       const data = mergeAssetsByOwners(result);
-        return data;
-    },
-    async findAuction(ctx) {
-      const { orders } = await seaport.api.getOrders(
-        {
-          is_expired: false,
-          // sale_kind: 2
-        }
-        // {
-        // asset_contract_address: address,
-        // token_id: id,
-        // side: 1
-        // }
-      )
-      return orders
-    },
+  async find(ctx) {
+    let owners = [];
+    const talents = await strapi.services.talents.find();
+    for (let talent in talents) {
+      owners.push(talents[talent].walletAddress);
+    }
+    // return owners;
+    const result = await getAssetsByOwners(owners);
+    const data = mergeAssetsByOwners(result);
+    return data;
+  },
+  async findAuction(ctx) {
+    const { orders } = await seaport.api.getOrders(
+      {
+        is_expired: false,
+        // sale_kind: 2
+      }
+      // {
+      // asset_contract_address: address,
+      // token_id: id,
+      // side: 1
+      // }
+    );
+    return orders;
+  },
+  async nfts(ctx) {
+    const nfts = await strapi.services.nfts.find(ctx.query);
+    return nfts;
+  },
 };
