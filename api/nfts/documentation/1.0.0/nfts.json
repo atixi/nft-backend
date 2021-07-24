@@ -725,6 +725,9 @@
                 "icon": {
                   "type": "string"
                 },
+                "categoryBanner": {
+                  "type": "string"
+                },
                 "published_at": {
                   "type": "string"
                 },
