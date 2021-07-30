@@ -7,39 +7,17 @@
 
 module.exports = {
   async findOne(ctx) {
-    // const { slug } = ctx.params;
-    // // const entity = await strapi.services.categories.findOne({ slug });
-    // // return { ...entity };
-    // const category = strapi
-    //   .query("categories")
-    //   .findOne({ slug }, ["categories.categoryName", "nfts", "nfts.talent"]);
-    // const nfts = strapi.query("nfts").find({ name_contains: "nu" });
-    // return nfts;
-
-    // const knex = require("knex")({
-    //   client: "postgres",
-    //   connection: {
-    //     host: "ec2-54-197-100-79.compute-1.amazonaws.com",
-    //     user: "yeqluzatluhqfo",
-    //     password:
-    //       "1e795ddb37ac62ade4dffae1054e341d1ebddd8b5a7d2431060ba1d046c4173e",
-    //     database: "d2u4i8ggkk26o9",
-    //     charset: "utf8",
-    //   },
-    // });
-    // const bookshelf = require("bookshelf")(knex);
-
-    // const User = bookshelf.model("Categories", {
-    //   tableName: "categories",
-    // });
-    // return User;
-
     const _ = require("lodash");
 
     const knex = strapi.connections.default;
     const result = await knex("categories")
       .where("categoryName", "berlin")
-      .join("nfts", "category.id", "nfts.categories_id")
+      .join(
+        "categories_nfts__nfts_categories",
+        "categories.id",
+        "categories_nfts__nfts_categories.category_id"
+      )
+      .join("nfts", "categories_nfts__nfts_categories.nft_id", "nfts.id")
       .select("categories.categoryName as restaurant")
       .select("nfts.name as chef");
 
