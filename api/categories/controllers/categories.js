@@ -1,5 +1,5 @@
 "use strict";
-
+const seaport = strapi.config.functions.openSeaApi.seaport();
 // /**
 //  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
 //  * to customize this controller
@@ -7,24 +7,40 @@
 
 module.exports = {
   async findOne(ctx) {
-    const _ = require("lodash");
+    const { slug } = ctx.params;
+    const { limit, offset } = ctx.query;
 
     const knex = strapi.connections.default;
+    const entity = await strapi.services.categories.findOne({ slug }, [
+      "categories",
+      "categoryImage",
+      "categoryBanner",
+    ]);
+
     const result = await knex("categories")
-      .where("categoryName", "berlin")
+      .where("slug", slug)
       .join(
         "categories_nfts__nfts_categories",
         "categories.id",
         "categories_nfts__nfts_categories.category_id"
       )
       .join("nfts", "categories_nfts__nfts_categories.nft_id", "nfts.id")
-      .select("categories.categoryName as restaurant")
-      .select("nfts.name as chef");
+      .join("talents", "nfts.talent", "talents.id")
+      .select("categories.categoryName", "categories.slug")
+      .select("talents.talentName", "talents.userName")
+      .select("nfts.*")
+      .limit(limit)
+      .offset(offset);
 
-    // Lodash's groupBy method can be used to
-    // return a grouped key-value object generated from
-    // the response
+    for (let i = 0; i < result.length; i++) {
+      let res = await seaport.api.getAsset({
+        tokenAddress: await result[i].tokenAddress,
+        tokenId: await result[i].tokenId,
+      });
+      result[i]["currentPrice"] = await res.orders[0].currentPrice;
+      result[i]["imageUrl"] = await res.imageUrl;
+    }
 
-    return _.groupBy(result, "nfts");
+    return { ...entity, assets: [...result] };
   },
 };
