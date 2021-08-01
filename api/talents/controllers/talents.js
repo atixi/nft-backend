@@ -1,5 +1,6 @@
 "use strict";
 const seaport = strapi.config.functions.openSeaApi.seaport();
+const _ = require("lodash");
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
  * to customize this controller
@@ -40,10 +41,16 @@ module.exports = {
           walletAddress: tals[i].walletAddress,
           bio: tals[i].bio,
           talentAvatar: { url: tals[i].talentAvatar.url },
+          totalOfSales: _.sumBy(data, function (o) {
+            return o.lastSale;
+          }),
           assets: [...data],
         },
       ];
     }
+    // let gfg = _.sumBy(talents.assets, function (o) {
+    //   return o.lastSale;
+    // });
     return talents;
   },
 
@@ -62,4 +69,3 @@ module.exports = {
     return { talents: talents, collections: collections, assets: assets };
   },
 };
-
