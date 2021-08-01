@@ -39,8 +39,17 @@ module.exports = {
       });
       result[i]["currentPrice"] = await res.orders[0].currentPrice;
       result[i]["imageUrl"] = await res.imageUrl;
+      result[i]["owner"] = {};
+      result[i].owner["profile_img_url"] = await res.owner.profile_img_url;
     }
 
     return { ...entity, assets: [...result] };
+
+    // let res = await seaport.api.getAsset({
+    //   tokenAddress: await result[0].tokenAddress,
+    //   tokenId: await result[0].tokenId,
+    // });
+
+    // return res;
   },
 };
