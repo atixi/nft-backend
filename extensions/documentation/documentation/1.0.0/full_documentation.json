@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "08/01/2021 7:50:36 PM"
+    "x-generation-date": "08/04/2021 5:11:47 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2087,7 +2087,7 @@
         "parameters": []
       }
     },
-    "/talents/{userName}": {
+    "/talents/{walletAddress}": {
       "get": {
         "deprecated": false,
         "description": "Find one talents record",
@@ -2139,7 +2139,7 @@
         ],
         "parameters": [
           {
-            "name": "userName",
+            "name": "walletAddress",
             "in": "path",
             "description": "",
             "deprecated": false,
