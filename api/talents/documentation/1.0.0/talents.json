@@ -379,7 +379,7 @@
         "parameters": []
       }
     },
-    "/talents/{userName}": {
+    "/talents/{walletAddress}": {
       "get": {
         "deprecated": false,
         "description": "Find one talents record",
@@ -431,7 +431,7 @@
         ],
         "parameters": [
           {
-            "name": "userName",
+            "name": "walletAddress",
             "in": "path",
             "description": "",
             "deprecated": false,
