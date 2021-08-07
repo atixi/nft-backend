@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/collections/collectionsList",
+      "handler": "collections.collectionsList",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/collections",
       "handler": "collections.find",
       "config": {

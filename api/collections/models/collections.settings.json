@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "collectionName": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "slug": {
       "type": "uid"
@@ -49,6 +50,12 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "contractAddress": {
+      "type": "string"
+    },
+    "talentAddress": {
+      "type": "string"
     }
   }
 }

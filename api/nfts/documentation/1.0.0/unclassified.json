@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/nfts/nfts": {
+    "/collections/collectionsList": {
       "get": {
         "deprecated": false,
         "description": "",

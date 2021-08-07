@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/30/2021 6:36:13 PM"
+    "x-generation-date": "08/06/2021 6:05:53 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -45,6 +45,63 @@
     }
   ],
   "paths": {
+    "/categories/categoriesList": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Retrieve categories document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Categories"
+        ],
+        "parameters": []
+      }
+    },
     "/categories": {
       "get": {
         "deprecated": false,
@@ -556,6 +613,63 @@
             }
           }
         ]
+      }
+    },
+    "/collections/collectionsList": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Unclassified"
+        ],
+        "parameters": []
       }
     },
     "/collections": {
@@ -1071,6 +1185,63 @@
         ]
       }
     },
+    "/nfts/nftsList": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Retrieve nfts document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Nfts"
+        ],
+        "parameters": []
+      }
+    },
     "/nfts": {
       "get": {
         "deprecated": false,
@@ -1331,7 +1502,7 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve nfts document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -1377,7 +1548,7 @@
         },
         "summary": "",
         "tags": [
-          "Unclassified"
+          "Nfts"
         ],
         "parameters": []
       }
@@ -5005,6 +5176,12 @@
               }
             }
           },
+          "contractAddress": {
+            "type": "string"
+          },
+          "talentAddress": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -5027,6 +5204,12 @@
             "items": {
               "type": "string"
             }
+          },
+          "contractAddress": {
+            "type": "string"
+          },
+          "talentAddress": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -5084,6 +5267,12 @@
                 "type": "string"
               },
               "collectionBanner": {
+                "type": "string"
+              },
+              "contractAddress": {
+                "type": "string"
+              },
+              "talentAddress": {
                 "type": "string"
               },
               "published_at": {
@@ -5364,6 +5553,12 @@
                   "type": "string"
                 },
                 "collectionBanner": {
+                  "type": "string"
+                },
+                "contractAddress": {
+                  "type": "string"
+                },
+                "talentAddress": {
                   "type": "string"
                 },
                 "published_at": {

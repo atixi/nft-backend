@@ -61,4 +61,7 @@ module.exports = {
     const nfts = await strapi.services.nfts.find(ctx.query);
     return nfts;
   },
+  async nftsList() {
+    return await strapi.services.nfts.find();
+  },
 };

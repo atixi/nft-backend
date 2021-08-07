@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/nfts/nftsList",
+      "handler": "nfts.nftsList",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/nfts",
       "handler": "nfts.find",
       "config": {

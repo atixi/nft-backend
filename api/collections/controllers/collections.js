@@ -1,11 +1,5 @@
 "use strict";
-
 const seaport = strapi.config.functions.openSeaApi.seaport();
-// import axios from "axios";
-/**
- * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
- * to customize this controller
- */
 
 module.exports = {
   async findOne(ctx) {
@@ -20,5 +14,18 @@ module.exports = {
     });
 
     return { ...entity, assets };
+  },
+  async collectionsList() {
+    const data = await strapi.services.collections.find();
+    const collections = data.map((item) => {
+      return {
+        thumbnailUrl: item.collectionImageURL.formats.thumbnail.url,
+        id: item.id,
+        collection: item.collectionName,
+        contractAddress: item.contractAddress,
+        slug: item.slug,
+      };
+    });
+    return collections;
   },
 };

@@ -43,4 +43,15 @@ module.exports = {
 
     return { ...entity, assets: [...result] };
   },
+  async categoriesList() {
+    const data = await strapi.services.categories.find();
+    const categoriesList = data.map((item) => {
+      return {
+        thumbnailUrl: item.categoryImage.formats.thumbnail.url,
+        id: item.id,
+        category: item.categoryName,
+      };
+    });
+    return categoriesList;
+  },
 };

@@ -1,5 +1,62 @@
 {
   "paths": {
+    "/nfts/nftsList": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Retrieve nfts document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Nfts"
+        ],
+        "parameters": []
+      }
+    },
     "/nfts": {
       "get": {
         "deprecated": false,
@@ -684,6 +741,12 @@
                 "type": "string"
               },
               "collectionBanner": {
+                "type": "string"
+              },
+              "contractAddress": {
+                "type": "string"
+              },
+              "talentAddress": {
                 "type": "string"
               },
               "published_at": {
