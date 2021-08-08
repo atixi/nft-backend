@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/collections/collectionexist/:account",
+      "handler": "collections.collectionexist",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/collections/collectionsList",
       "handler": "collections.collectionsList",
       "config": {

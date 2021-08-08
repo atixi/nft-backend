@@ -28,4 +28,16 @@ module.exports = {
     });
     return collections;
   },
+
+  async collectionexist(ctx) {
+    const { account } = ctx.params;
+    const collections = await strapi.services.collections.find();
+
+    for (var i = 0; i < collections.length; i++) {
+      if (collections[i].slug == account) {
+        return true;
+      }
+    }
+    return false;
+  },
 };
