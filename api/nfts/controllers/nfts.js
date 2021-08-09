@@ -1,5 +1,7 @@
 "use strict";
 const seaport = strapi.config.functions.openSeaApi.seaport();
+const OrderSide = 'opensea-js/lib/types'
+
 const getAssetsByOwner = (owner) => {
   return seaport.api.getAssets({
     owner,
