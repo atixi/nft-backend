@@ -60,7 +60,33 @@ module.exports = {
     return orders;
   },
   async getBundledOrder(ctx){
-    return 3;
+    try{
+    const {maker, slug} = ctx.params;
+    const { orders } = await seaport.api.getOrders(
+      {
+        is_expired: false,
+        maker: maker,
+        side: 1
+        // sale_kind: 2
+      }
+    );
+    let bundle;
+    orders.map((order) => {
+      if(order.assetBundle)
+      {
+        console.log(order)
+        if(order.assetBundle.slug == slug)
+        {
+          bundle= order
+        }
+      }
+    })
+    return bundle;
+  }
+  catch(e)
+  {
+    return e;
+  }
   },
   async nfts(ctx) {
     const nfts = await strapi.services.nfts.find(ctx.query);
