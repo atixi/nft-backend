@@ -49,6 +49,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/nfts/bundle/single/:maker/:slug",
+      "handler": "nfts.getBundledOrder",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/nfts",
       "handler": "nfts.create",
