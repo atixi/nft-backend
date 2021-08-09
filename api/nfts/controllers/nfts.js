@@ -59,6 +59,9 @@ module.exports = {
     );
     return orders;
   },
+  async getBundledOrder(ctx){
+    return 3;
+  },
   async nfts(ctx) {
     const nfts = await strapi.services.nfts.find(ctx.query);
     return nfts;
