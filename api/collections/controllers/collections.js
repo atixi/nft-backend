@@ -16,17 +16,17 @@ module.exports = {
     return { ...entity, assets };
   },
   async collectionslist() {
-    // const data = await strapi.services.collections.find();
-    // const collections = data.map((item) => {
-    //   return {
-    //     thumbnailUrl: item.collectionImageURL.formats.thumbnail.url,
-    //     id: item.id,
-    //     collection: item.collectionName,
-    //     contractAddress: item.contractAddress,
-    //     slug: item.slug,
-    //   };
-    // });
-    return "collections";
+    const data = await strapi.services.collections.find();
+    const collections = data.map((item) => {
+      return {
+        thumbnailUrl: item.collectionImageURL.formats.thumbnail.url,
+        id: item.id,
+        collection: item.collectionName,
+        contractAddress: item.contractAddress,
+        slug: item.slug,
+      };
+    });
+    return collections;
   },
 
   async collectionexist(ctx) {
