@@ -54,6 +54,12 @@ module.exports = {
   },
   async categorieslist(ctx) {
     const data = await strapi.services.categories.find();
+    if (!data) {
+      return {
+        success: false,
+        message: "Categories list is not available",
+      };
+    }
     const categoriesList = data.map((item) => {
       return {
         thumbnailUrl: item.categoryImage.formats.thumbnail.url,

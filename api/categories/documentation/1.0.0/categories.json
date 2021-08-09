@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/categories/categoriesList": {
+    "/categories/categorieslist": {
       "get": {
         "deprecated": false,
         "description": "",
