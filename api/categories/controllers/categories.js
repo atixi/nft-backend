@@ -52,7 +52,7 @@ module.exports = {
 
     // return res;
   },
-  async categoriesList() {
+  async categorieslist(ctx) {
     const data = await strapi.services.categories.find();
     const categoriesList = data.map((item) => {
       return {

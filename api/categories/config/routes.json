@@ -2,8 +2,8 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/categories/categoriesList",
-      "handler": "categories.categoriesList",
+      "path": "/categories/categorieslist",
+      "handler": "categories.categorieslist",
       "config": {
         "policies": []
       }
