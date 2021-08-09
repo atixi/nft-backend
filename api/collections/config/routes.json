@@ -10,8 +10,8 @@
     },
     {
       "method": "GET",
-      "path": "/collections/collectionsList",
-      "handler": "collections.collectionsList",
+      "path": "/collections/collectionslist",
+      "handler": "collections.collectionslist",
       "config": {
         "policies": []
       }

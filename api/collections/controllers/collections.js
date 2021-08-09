@@ -15,7 +15,7 @@ module.exports = {
 
     return { ...entity, assets };
   },
-  async collectionsList() {
+  async collectionslist() {
     // const data = await strapi.services.collections.find();
     // const collections = data.map((item) => {
     //   return {

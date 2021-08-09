@@ -68,7 +68,7 @@
         ]
       }
     },
-    "/collections/collectionsList": {
+    "/collections/collectionslist": {
       "get": {
         "deprecated": false,
         "description": "",
