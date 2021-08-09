@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/talents/talentexists/:account",
+      "handler": "talents.talentexists",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/talents",
       "handler": "talents.find",
       "config": {

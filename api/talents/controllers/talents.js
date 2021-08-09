@@ -68,4 +68,29 @@ module.exports = {
 
     return { talents: talents, collections: collections, assets: assets };
   },
+
+  async talentexists(ctx) {
+    const { account } = ctx.params;
+    const talents = await strapi.services.talents.find();
+    if (!talents) {
+      return {
+        success: false,
+        message: "Server is not available",
+      };
+    }
+    for (var i = 0; i < talents.length; i++) {
+      if (talents[i].walletAddress == account) {
+        return {
+          success: true,
+          account: talents[i].walletAddress,
+          message: "Talent Exists",
+        };
+      }
+    }
+    return {
+      success: false,
+      account: null,
+      message: "Talent not exists",
+    };
+  },
 };
