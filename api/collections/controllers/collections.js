@@ -17,9 +17,15 @@ module.exports = {
   },
   async collectionslist(ctx) {
     const data = await strapi.services.collections.find();
+    if (!data) {
+      return {
+        success: false,
+        message: "Can not load data",
+      };
+    }
     const collections = data.map((item) => {
       return {
-        thumbnailUrl: item.collectionImageURL.formats.thumbnail.url,
+        thumbnailUrl: item.collectionImageURL?.formats?.thumbnail.url,
         id: item.id,
         collection: item.collectionName,
         contractAddress: item.contractAddress,
