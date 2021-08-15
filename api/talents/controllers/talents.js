@@ -36,11 +36,11 @@ module.exports = {
       talents = [
         ...talents,
         {
-          userName: tals[i].userName,
-          talentName: tals[i].talentName,
-          walletAddress: tals[i].walletAddress,
-          bio: tals[i].bio,
-          talentAvatar: { url: tals[i].talentAvatar.url },
+          userName: tals[i]?.userName,
+          talentName: tals[i]?.talentName,
+          walletAddress: tals[i]?.walletAddress,
+          bio: tals[i]?.bio,
+          talentAvatar: { url: tals[i]?.talentAvatar?.url },
           totalOfSales: _.sumBy(data, function (o) {
             return o.lastSale;
           }),
@@ -82,7 +82,7 @@ module.exports = {
       if (talents[i].walletAddress == account) {
         return {
           success: true,
-          account: talents[i].walletAddress,
+          account: talents[i]?.walletAddress,
           message: "Talent Exists",
         };
       }
