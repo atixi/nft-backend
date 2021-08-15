@@ -31,23 +31,24 @@ module.exports = {
     const tals = await strapi.services.talents.find(ctx.query);
     let talents = [];
 
-    for (let i = 0; i < tals.length; i++) {
-      const data = await fetchAssets(await tals[i].walletAddress);
-      talents = [
-        ...talents,
-        {
-          userName: tals[i].userName,
-          talentName: tals[i].talentName,
-          walletAddress: tals[i].walletAddress,
-          bio: tals[i].bio,
-          talentAvatar: { url: tals[i].talentAvatar?.url },
-          totalOfSales: _.sumBy(data, function (o) {
-            return o.lastSale;
-          }),
-          assets: [...data],
-        },
-      ];
-    }
+    if (tals)
+      for (let i = 0; i < tals.length; i++) {
+        const data = await fetchAssets(await tals[i].walletAddress);
+        talents = [
+          ...talents,
+          {
+            userName: tals[i]?.userName,
+            talentName: tals[i]?.talentName,
+            walletAddress: tals[i]?.walletAddress,
+            bio: tals[i]?.bio,
+            talentAvatar: { url: tals[i]?.talentAvatar?.url },
+            totalOfSales: _.sumBy(data, function (o) {
+              return o.lastSale;
+            }),
+            assets: [...data],
+          },
+        ];
+      }
     // let gfg = _.sumBy(talents.assets, function (o) {
     //   return o.lastSale;
     // });
