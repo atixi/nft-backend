@@ -1,0 +1,3 @@
+running commands
+
+yarn dev -H 10.10.10.243
