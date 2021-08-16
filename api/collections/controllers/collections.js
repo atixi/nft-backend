@@ -29,6 +29,7 @@ module.exports = {
         id: item.id,
         collection: item.collectionName,
         contractAddress: item.contractAddress,
+        talentAddress: item.talentAddress,
         slug: item.slug,
       };
     });
