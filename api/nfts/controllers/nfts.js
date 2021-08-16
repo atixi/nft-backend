@@ -31,7 +31,13 @@ module.exports = {
       tokenAddress: address,
       tokenId: id,
     });
-    return OpenSeaAsset;
+    const sellOrder = await seaport.api.getOrder(
+      {
+        asset_contract_address: address,
+        token_id: id,
+        side: 1
+      })
+    return {...OpenSeaAsset, sellOrder};
   },
 
   async find(ctx) {
@@ -46,6 +52,10 @@ module.exports = {
     return data;
   },
   async findAuction(ctx) {
+    // let tokenIds = [];
+    // let tokenAddress =[];
+    // const nfts = await strapi.services.nfts.find();
+    // if()
     const { orders } = await seaport.api.getOrders(
       {
         is_expired: false,
