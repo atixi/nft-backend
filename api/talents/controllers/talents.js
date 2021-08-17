@@ -35,11 +35,7 @@ module.exports = {
       talents = [
         ...talents,
         {
-          userName: tals[i].userName,
-          talentName: tals[i].talentName,
-          walletAddress: tals[i].walletAddress,
-          bio: tals[i].bio,
-          talentAvatar: { url: tals[i].talentAvatar.url },
+          ...tals[i],
           totalOfSales: _.sumBy(data, function (o) {
             return o.lastSale;
           }),
