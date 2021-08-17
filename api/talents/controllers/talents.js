@@ -28,22 +28,26 @@ module.exports = {
 
   async find(ctx) {
     const tals = await strapi.services.talents.find(ctx.query);
-    let talents = [];
 
-    for (let i = 0; i < tals.length; i++) {
-      const data = await fetchAssets(tals[i].walletAddress);
-      talents = [
-        ...talents,
-        {
-          ...tals[i],
-          totalOfSales: _.sumBy(data, function (o) {
-            return o.lastSale;
-          }),
-          assets: [...data],
-        },
-      ];
+    try {
+      let talents = [];
+      for (let i = 0; i < tals.length; i++) {
+        const data = await fetchAssets(tals[i].walletAddress);
+        talents = [
+          ...talents,
+          {
+            ...tals[i],
+            totalOfSales: _.sumBy(data, function (o) {
+              return o.lastSale;
+            }),
+            assets: [...data],
+          },
+        ];
+      }
+      return talents;
+    } catch (error) {
+      return tals;
     }
-    return talents;
   },
 
   async search(ctx) {
