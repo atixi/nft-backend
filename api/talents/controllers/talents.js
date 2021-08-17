@@ -24,34 +24,29 @@ module.exports = {
       offset: offset,
     });
     return { ...entity, assets };
-    // return sanitizeEntity(entity, { model: strapi.models.collections });
   },
 
   async find(ctx) {
     const tals = await strapi.services.talents.find(ctx.query);
     let talents = [];
 
-    if (tals)
-      for (let i = 0; i < tals.length; i++) {
-        const data = await fetchAssets(await tals[i].walletAddress);
-        talents = [
-          ...talents,
-          {
-            userName: tals[i]?.userName,
-            talentName: tals[i]?.talentName,
-            walletAddress: tals[i]?.walletAddress,
-            bio: tals[i]?.bio,
-            talentAvatar: { url: tals[i]?.talentAvatar?.url },
-            totalOfSales: _.sumBy(data, function (o) {
-              return o.lastSale;
-            }),
-            assets: [...data],
-          },
-        ];
-      }
-    // let gfg = _.sumBy(talents.assets, function (o) {
-    //   return o.lastSale;
-    // });
+    for (let i = 0; i < tals.length; i++) {
+      const data = await fetchAssets(tals[i].walletAddress);
+      talents = [
+        ...talents,
+        {
+          userName: tals[i].userName,
+          talentName: tals[i].talentName,
+          walletAddress: tals[i].walletAddress,
+          bio: tals[i].bio,
+          talentAvatar: { url: tals[i].talentAvatar.url },
+          totalOfSales: _.sumBy(data, function (o) {
+            return o.lastSale;
+          }),
+          assets: [...data],
+        },
+      ];
+    }
     return talents;
   },
 
@@ -68,30 +63,5 @@ module.exports = {
     });
 
     return { talents: talents, collections: collections, assets: assets };
-  },
-
-  async talentexists(ctx) {
-    const { account } = ctx.params;
-    const talents = await strapi.services.talents.find();
-    if (!talents) {
-      return {
-        success: false,
-        message: "Server is not available",
-      };
-    }
-    for (var i = 0; i < talents.length; i++) {
-      if (talents[i].walletAddress == account) {
-        return {
-          success: true,
-          account: talents[i]?.walletAddress,
-          message: "Talent Exists",
-        };
-      }
-    }
-    return {
-      success: false,
-      account: null,
-      message: "Talent not exists",
-    };
   },
 };
