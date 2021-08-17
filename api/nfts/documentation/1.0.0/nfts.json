@@ -371,7 +371,7 @@
     "/nfts/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of nfts documents",
+        "description": "Retrieve the number of nfts documents",
         "responses": {
           "200": {
             "description": "Retrieve nfts document(s)",

@@ -314,7 +314,7 @@
     "/categories/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of categories documents",
+        "description": "Retrieve the number of categories documents",
         "responses": {
           "200": {
             "description": "Retrieve categories document(s)",
