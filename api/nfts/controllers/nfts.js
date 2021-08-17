@@ -31,12 +31,18 @@ module.exports = {
       tokenAddress: address,
       tokenId: id,
     });
-    const sellOrder = await seaport.api.getOrder(
-      {
-        asset_contract_address: address,
-        token_id: id,
-        side: 1
-      })
+    let sellOrder = null;
+    try{
+      sellOrder = await seaport.api.getOrder(
+        {
+          asset_contract_address: address,  
+          token_id: id,
+          side: 1
+        })
+      }
+      catch(e){
+        sellOrder = null;
+      }
     return {...OpenSeaAsset, sellOrder};
   },
 
