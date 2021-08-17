@@ -37,6 +37,7 @@ module.exports = {
         tokenAddress: await result[i].tokenAddress,
         tokenId: await result[i].tokenId,
       });
+      result[i]["currentPrice"] = 0;
       // result[i]["currentPrice"] = await res.orders[0].currentPrice;
       result[i]["imageUrl"] = await res.imageUrl;
       result[i]["owner"] = {};
