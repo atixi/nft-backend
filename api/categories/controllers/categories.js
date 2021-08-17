@@ -16,35 +16,36 @@ module.exports = {
       "categoryImage",
       "categoryBanner",
     ]);
-
-    const result = await knex("categories")
-      .where("slug", slug)
-      .join(
-        "categories_nfts__nfts_categories",
-        "categories.id",
-        "categories_nfts__nfts_categories.category_id"
-      )
-      .join("nfts", "categories_nfts__nfts_categories.nft_id", "nfts.id")
-      .join("talents", "nfts.talent", "talents.id")
-      .select("categories.categoryName", "categories.slug")
-      .select("talents.talentName", "talents.userName")
-      .select("nfts.*")
-      .limit(limit)
-      .offset(offset);
-
-    for (let i = 0; i < result.length; i++) {
-      let res = await seaport.api.getAsset({
-        tokenAddress: await result[i].tokenAddress,
-        tokenId: await result[i].tokenId,
-      });
-      result[i]["currentPrice"] = 0;
-      // result[i]["currentPrice"] = await res.orders[0].currentPrice;
-      result[i]["imageUrl"] = await res.imageUrl;
-      result[i]["owner"] = {};
-      result[i].owner["profile_img_url"] = await res.owner.profile_img_url;
+    try {
+      const result = await knex("categories")
+        .where("slug", slug)
+        .join(
+          "categories_nfts__nfts_categories",
+          "categories.id",
+          "categories_nfts__nfts_categories.category_id"
+        )
+        .join("nfts", "categories_nfts__nfts_categories.nft_id", "nfts.id")
+        .join("talents", "nfts.talent", "talents.id")
+        .select("categories.categoryName", "categories.slug")
+        .select("talents.talentName", "talents.userName")
+        .select("nfts.*")
+        .limit(limit)
+        .offset(offset);
+      for (let i = 0; i < result.length; i++) {
+        let res = await seaport.api.getAsset({
+          tokenAddress: await result[i].tokenAddress,
+          tokenId: await result[i].tokenId,
+        });
+        result[i]["currentPrice"] = 0;
+        // result[i]["currentPrice"] = await res.orders[0].currentPrice;
+        result[i]["imageUrl"] = await res.imageUrl;
+        result[i]["owner"] = {};
+        result[i].owner["profile_img_url"] = await res.owner.profile_img_url;
+      }
+      return { ...entity, assets: [...result] };
+    } catch (error) {
+      return { ...entity, assets: [] };
     }
-
-    return { ...entity, assets: [...result] };
 
     // let res = await seaport.api.getAsset({
     //   tokenAddress: await result[0].tokenAddress,
