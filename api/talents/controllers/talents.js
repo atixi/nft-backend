@@ -17,13 +17,19 @@ module.exports = {
   async findOne(ctx) {
     const { walletAddress } = ctx.params;
     const entity = await strapi.services.talents.findOne({ walletAddress });
-    const { offset } = ctx.query;
-    const { assets } = await seaport.api.getAssets({
-      owner: entity.walletAddress,
-      limit: 10,
-      offset: offset,
-    });
-    return { ...entity, assets };
+
+    try {
+      const { offset } = ctx.query;
+      const { assets } = await seaport.api.getAssets({
+        owner: entity.walletAddress,
+        limit: 10,
+        offset: offset,
+      });
+      return { ...entity, assets };
+    } catch (error) {
+      return { ...entity, assets: [] };
+    }
+    return entity;
   },
 
   async find(ctx) {
