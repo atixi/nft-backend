@@ -31,18 +31,25 @@ module.exports = {
         .select("nfts.*")
         .limit(limit)
         .offset(offset);
-      for (let i = 0; i < result.length; i++) {
-        let res = await seaport.api.getAsset({
-          tokenAddress: await result[i].tokenAddress,
-          tokenId: await result[i].tokenId,
-        });
-        result[i]["currentPrice"] = 0;
-        // result[i]["currentPrice"] = await res.orders[0].currentPrice;
-        result[i]["imageUrl"] = await res.imageUrl;
-        result[i]["owner"] = {};
-        result[i].owner["profile_img_url"] = await res.owner.profile_img_url;
+      if (result) {
+        try {
+          for (let i = 0; i < result.length; i++) {
+            let res = await seaport.api.getAsset({
+              tokenAddress: await result[i].tokenAddress,
+              tokenId: await result[i].tokenId,
+            });
+            result[i]["currentPrice"] = 0;
+            // result[i]["currentPrice"] = await res.orders[0].currentPrice;
+            result[i]["imageUrl"] = await res.imageUrl;
+            result[i]["owner"] = {};
+            result[i].owner["profile_img_url"] = await res.owner
+              .profile_img_url;
+          }
+          return { ...entity, assets: [...result] };
+        } catch {
+          return { ...entity, assets: [...result] };
+        }
       }
-      return { ...entity, assets: [...result] };
     } catch (error) {
       return { ...entity, assets: [] };
     }
