@@ -38,12 +38,20 @@ module.exports = {
               tokenAddress: await result[i].tokenAddress,
               tokenId: await result[i].tokenId,
             });
-            result[i]["currentPrice"] = 0;
+            if (res.orders[0].currentPrice != undefined) {
+              result[i]["currentPrice"] = await res.orders[0].currentPrice;
+            } else {
+              result[i]["currentPrice"] = 0;
+            }
             // result[i]["currentPrice"] = await res.orders[0].currentPrice;
-            result[i]["imageUrl"] = await res.imageUrl;
-            result[i]["owner"] = {};
-            result[i].owner["profile_img_url"] = await res.owner
-              .profile_img_url;
+            if (res.imageUrl != undefined) {
+              result[i]["imageUrl"] = await res.imageUrl;
+            }
+            if (res.owner.profile_img_url != undefined) {
+              result[i]["owner"] = {};
+              result[i].owner["profile_img_url"] = await res.owner
+                .profile_img_url;
+            }
           }
           return { ...entity, assets: [...result] };
         } catch {
