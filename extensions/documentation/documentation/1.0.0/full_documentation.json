@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "08/18/2021 5:06:00 PM"
+    "x-generation-date": "08/21/2021 11:25:21 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -359,7 +359,7 @@
     "/categories/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the number of categories documents",
+        "description": "Retrieve the numver of categories documents",
         "responses": {
           "200": {
             "description": "Retrieve categories document(s)",
@@ -997,7 +997,7 @@
     "/collections/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the number of collections documents",
+        "description": "Retrieve the numver of collections documents",
         "responses": {
           "200": {
             "description": "Retrieve collections document(s)",
@@ -1624,7 +1624,7 @@
     "/nfts/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the number of nfts documents",
+        "description": "Retrieve the numver of nfts documents",
         "responses": {
           "200": {
             "description": "Retrieve nfts document(s)",
@@ -2986,7 +2986,7 @@
     "/talents/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the number of talents documents",
+        "description": "Retrieve the numver of talents documents",
         "responses": {
           "200": {
             "description": "Retrieve talents document(s)",
