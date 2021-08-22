@@ -16,6 +16,7 @@
     },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "x-generation-date": "08/22/2021 10:28:47 PM"
 =======
     "x-generation-date": "08/22/2021 10:17:06 PM"
@@ -23,6 +24,9 @@
 =======
     "x-generation-date": "08/22/2021 10:23:30 PM"
 >>>>>>> 81c52d2 (adding try catch to auction)
+=======
+    "x-generation-date": "08/22/2021 10:29:17 PM"
+>>>>>>> e79e813 (d)
   },
   "x-strapi-config": {
     "path": "/documentation",
