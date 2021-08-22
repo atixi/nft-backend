@@ -30,25 +30,31 @@ const getAllAssets = async () => {
 
   let allAssets = [];
   try {
-    await bluebird.map(
-      talents,
-      async (line) => {
-        try {
-          let { assets } = await bluebird.delay(2000).return(
-            seaport.api.getAssets({
-              owner: line.walletAddress,
-            })
-          );
-          if (assets) {
-            allAssets = [...allAssets, ...assets];
+    await bluebird
+      .map(
+        talents,
+        async (line) => {
+          try {
+            let { assets } = await bluebird.delay(1000).return(
+              seaport.api
+                .getAssets({
+                  owner: line.walletAddress,
+                })
+                .catch(function (e) {
+                  console.log("error in getting asset", e);
+                })
+            );
+            if (assets) {
+              allAssets = [...allAssets, ...assets];
+            }
+            console.log("requet number", line.id);
+          } catch (e) {
+            console.log("error in getting asset of onwer", e);
           }
-          console.log("requet number", line.id);
-        } catch (e) {
-          console.log("error in getting asset of onwer", e);
-        }
-      },
-      { concurrency: 1 }
-    );
+        },
+        { concurrency: 1 }
+      )
+      .catch((err) => console.log(err));
     return allAssets;
   } catch (e) {
     console.log("error in getting all assets", e);
