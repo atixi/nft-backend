@@ -39,7 +39,9 @@ const getAllAssets = async () => {
               owner: line.walletAddress,
             })
           );
-          allAssets = [...allAssets, ...assets];
+          if (assets) {
+            allAssets = [...allAssets, ...assets];
+          }
           console.log("requet number", line.id);
         } catch (e) {
           console.log("error in getting asset of onwer", e);
@@ -94,7 +96,9 @@ module.exports = {
                 sale_kind: 2,
               })
             );
-            auctions = [...auctions, ...orders];
+            if (orders) {
+              auctions = [...auctions, ...orders];
+            }
             console.log("first promise is sent", line.id);
           } catch (e) {
             console.log("error in auction ", e);
