@@ -53,26 +53,31 @@ module.exports = {
   async findAuction(ctx) {
     const talents = await strapi.services.talents.find();
     let auctions = [];
-    await bluebird.map(
-      talents,
-      async (line) => {
-        try {
-          let { orders } = await bluebird.delay(2000).return(
-            seaport.api.getOrders({
-              owner: line.walletAddress,
-              is_expired: false,
-              sale_kind: 2,
-            })
-          );
-          auctions = [...auctions, ...orders];
-          console.log("first promise is sent", line.id);
-        } catch (e) {
-          console.log("error in auction ", e);
-        }
-      },
-      { concurrency: 1 }
-    );
+    try {
+      await bluebird.map(
+        talents,
+        async (line) => {
+          try {
+            let { orders } = await bluebird.delay(2000).return(
+              seaport.api.getOrders({
+                owner: line.walletAddress,
+                is_expired: false,
+                sale_kind: 2,
+              })
+            );
+            auctions = [...auctions, ...orders];
+            console.log("first promise is sent", line.id);
+          } catch (e) {
+            console.log("error in auction ", e);
+          }
+        },
+        { concurrency: 1 }
+      );
 
+      return auctions;
+    } catch (e) {
+      console.log("error in all auction ", e);
+    }
     return auctions;
   },
   async getBundledOrder(ctx) {
