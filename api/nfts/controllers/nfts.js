@@ -1,6 +1,7 @@
 "use strict";
 const seaport = strapi.config.functions.openSeaApi.seaport();
-const OrderSide = 'opensea-js/lib/types'
+const OrderSide = "opensea-js/lib/types";
+const bluebird = require("bluebird");
 
 const getAssetsByOwner = (owner) => {
   return seaport.api.getAssets({
@@ -27,23 +28,15 @@ const mergeAssetsByOwners = (result) => {
 module.exports = {
   async findOne(ctx) {
     const { id, address } = ctx.params;
-    const OpenSeaAsset = await seaport.api.getAsset({
-      tokenAddress: address,
-      tokenId: id,
-    });
-    let sellOrder = null;
-    try{
-      sellOrder = await seaport.api.getOrder(
-        {
-          asset_contract_address: address,  
-          token_id: id,
-          side: 1
-        })
-      }
-      catch(e){
-        sellOrder = null;
-      }
-    return {...OpenSeaAsset, sellOrder};
+    try {
+      const OpenSeaAsset = await seaport.api.getAsset({
+        tokenAddress: address,
+        tokenId: id,
+      });
+      return OpenSeaAsset;
+    } catch (e) {
+      return null;
+    }
   },
 
   async find(ctx) {
@@ -58,51 +51,45 @@ module.exports = {
     return data;
   },
   async findAuction(ctx) {
-    // let tokenIds = [];
-    // let tokenAddress =[];
-    // const nfts = await strapi.services.nfts.find();
-    // if()
-    const { orders } = await seaport.api.getOrders(
-      {
-        is_expired: false,
-        // sale_kind: 2
-      }
-      // {
-      // asset_contract_address: address,
-      // token_id: id,
-      // side: 1
-      // }
+    const talents = await strapi.services.talents.find();
+    let auctions = [];
+    await bluebird.map(
+      talents,
+      async (line) => {
+        let { orders } = await seaport.api.getOrders({
+          owner: line.walletAddress,
+          is_expired: false,
+          sale_kind: 2,
+        });
+        auctions = [...auctions, ...orders];
+      },
+      { concurrency: 1 }
     );
-    return orders;
+
+    return auctions;
   },
-  async getBundledOrder(ctx){
-    try{
-    const {maker, slug} = ctx.params;
-    const { orders } = await seaport.api.getOrders(
-      {
+  async getBundledOrder(ctx) {
+    try {
+      const { maker, slug } = ctx.params;
+      const { orders } = await seaport.api.getOrders({
         is_expired: false,
         maker: maker,
-        side: 1
+        side: 1,
         // sale_kind: 2
-      }
-    );
-    let bundle;
-    orders.map((order) => {
-      if(order.assetBundle)
-      {
-        console.log(order)
-        if(order.assetBundle.slug == slug)
-        {
-          bundle= order
+      });
+      let bundle;
+      orders.map((order) => {
+        if (order.assetBundle) {
+          console.log(order);
+          if (order.assetBundle.slug == slug) {
+            bundle = order;
+          }
         }
-      }
-    })
-    return bundle;
-  }
-  catch(e)
-  {
-    return e;
-  }
+      });
+      return bundle;
+    } catch (e) {
+      return e;
+    }
   },
   async nfts(ctx) {
     const nfts = await strapi.services.nfts.find(ctx.query);

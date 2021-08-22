@@ -393,7 +393,7 @@
     "/talents/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the number of talents documents",
+        "description": "Retrieve the numver of talents documents",
         "responses": {
           "200": {
             "description": "Retrieve talents document(s)",

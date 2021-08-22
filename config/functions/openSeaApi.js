@@ -8,7 +8,7 @@ module.exports = {
     );
     const seaport = new OpenSeaPort(provider, {
       networkName: Network.Rinkeby,
-      apiKey: "c2dde5d7c0a0465a8e994f711a3a3c31",
+      // apiKey: "c2dde5d7c0a0465a8e994f711a3a3c31",
     });
 
     //   {

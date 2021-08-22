@@ -79,7 +79,7 @@ module.exports = {
     }
     const categoriesList = data.map((item) => {
       return {
-        thumbnailUrl: item.categoryImage.formats.thumbnail.url,
+        thumbnailUrl: item?.categoryImage?.formats?.thumbnail?.url,
         id: item.id,
         category: item.categoryName,
       };
