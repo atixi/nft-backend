@@ -25,6 +25,34 @@ const mergeAssetsByOwners = (result) => {
   return assets;
 };
 
+const getAllAssets = async () => {
+  const talents = await strapi.services.talents.find();
+
+  let allAssets = [];
+  try {
+    await bluebird.map(
+      talents,
+      async (line) => {
+        try {
+          let { assets } = await bluebird.delay(2000).return(
+            seaport.api.getAssets({
+              owner: line.walletAddress,
+            })
+          );
+          allAssets = [...allAssets, ...assets];
+          console.log("requet number", line.id);
+        } catch (e) {
+          console.log("error in getting asset of onwer", e);
+        }
+      },
+      { concurrency: 1 }
+    );
+    return allAssets;
+  } catch (e) {
+    console.log("error in getting all assets", e);
+  }
+  return auctions;
+};
 module.exports = {
   async findOne(ctx) {
     const { id, address } = ctx.params;
@@ -40,14 +68,15 @@ module.exports = {
   },
 
   async find(ctx) {
-    let owners = [];
-    const talents = await strapi.services.talents.find();
-    for (let talent in talents) {
-      owners.push(talents[talent].walletAddress);
-    }
-    // return owners;
-    const result = await getAssetsByOwners(owners);
-    const data = mergeAssetsByOwners(result);
+    const data = await getAllAssets();
+    // let owners = [];
+    // const talents = await strapi.services.talents.find();
+    // for (let talent in talents) {
+    //   owners.push(talents[talent].walletAddress);
+    // }
+    // // return owners;
+    // const result = await getAssetsByOwners(owners);
+    // const data = mergeAssetsByOwners(result);
     return data;
   },
   async findAuction(ctx) {
