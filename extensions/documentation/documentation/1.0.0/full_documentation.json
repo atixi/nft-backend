@@ -14,7 +14,11 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
+<<<<<<< HEAD
     "x-generation-date": "08/22/2021 10:28:47 PM"
+=======
+    "x-generation-date": "08/22/2021 10:17:06 PM"
+>>>>>>> 55168d7 (adding try catch for auctions)
   },
   "x-strapi-config": {
     "path": "/documentation",

@@ -56,15 +56,19 @@ module.exports = {
     await bluebird.map(
       talents,
       async (line) => {
-        let { orders } = await bluebird.delay(2000).return(
-          seaport.api.getOrders({
-            owner: line.walletAddress,
-            is_expired: false,
-            sale_kind: 2,
-          })
-        );
-        auctions = [...auctions, ...orders];
-        console.log("first promise is sent", line.id);
+        try {
+          let { orders } = await bluebird.delay(2000).return(
+            seaport.api.getOrders({
+              owner: line.walletAddress,
+              is_expired: false,
+              sale_kind: 2,
+            })
+          );
+          auctions = [...auctions, ...orders];
+          console.log("first promise is sent", line.id);
+        } catch (e) {
+          console.log("error in auction ", e);
+        }
       },
       { concurrency: 1 }
     );
