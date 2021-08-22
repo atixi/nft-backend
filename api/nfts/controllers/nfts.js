@@ -96,10 +96,9 @@ module.exports = {
                 sale_kind: 2,
               })
             );
-            if (orders) {
+            if (orders && orders != null && orders.length > 0) {
               auctions = [...auctions, ...orders];
             }
-            console.log("first promise is sent", line.id);
           } catch (e) {
             console.log("error in auction ", e);
           }
