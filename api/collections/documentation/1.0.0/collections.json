@@ -382,7 +382,7 @@
     "/collections/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of collections documents",
+        "description": "Retrieve the number of collections documents",
         "responses": {
           "200": {
             "description": "Retrieve collections document(s)",

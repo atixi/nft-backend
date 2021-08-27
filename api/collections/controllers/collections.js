@@ -1,4 +1,6 @@
 "use strict";
+const { sanitizeEntity, parseMultipartData } = require("strapi-utils");
+
 const seaport = strapi.config.functions.openSeaApi.seaport();
 
 module.exports = {
@@ -31,7 +33,7 @@ module.exports = {
       return {
         thumbnailUrl: item.collectionImageURL?.formats?.thumbnail.url,
         id: item.id,
-        collection: item.collectionName,
+        collectionName: item.collectionName,
         contractAddress: item.contractAddress,
         talentAddress: item.talentAddress,
         slug: item.slug,
@@ -50,5 +52,17 @@ module.exports = {
       }
     }
     return false;
+  },
+
+  async create(ctx) {
+    let entity;
+    const { data, files } = parseMultipartData(ctx);
+    entity = await strapi.services.collections.create(data, {
+      files,
+    });
+    strapi.emitNewCollection(entity, {
+      model: strapi.query("collections").model,
+    });
+    return sanitizeEntity(entity, { model: strapi.query("collections").model });
   },
 };
