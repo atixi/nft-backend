@@ -14,7 +14,11 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
+<<<<<<< HEAD
     "x-generation-date": "08/29/2021 9:25:02 AM"
+=======
+    "x-generation-date": "08/29/2021 4:29:52 AM"
+>>>>>>> ca4d38d (changin local to online url)
   },
   "x-strapi-config": {
     "path": "/documentation",
