@@ -5,6 +5,7 @@ const seaport = strapi.config.functions.openSeaApi.seaport();
 const OrderSide = "opensea-js/lib/types";
 const bluebird = require("bluebird");
 const { parseMultipartData, sanitizeEntity } = require("strapi-utils/lib");
+const { SaleKind } = require("opensea-js/lib/types");
 
 const getAssetsByOwner = (owner) => {
   return seaport.api.getAssets({
@@ -100,11 +101,11 @@ module.exports = {
         async (line) => {
           try {
             let { orders } = await bluebird
-              .delay(4000)
+              .delay(1000)
               .return(
                 seaport.api.getOrders({
                   owner: line.walletAddress,
-                  sale_kind: 1,
+                  sale_kind: SaleKind.FixedPrice,
                 })
               )
               .catch((e) => {
@@ -137,11 +138,11 @@ module.exports = {
         async (line) => {
           try {
             let { orders } = await bluebird
-              .delay(3000)
+              .delay(1000)
               .return(
                 seaport.api.getOrders({
                   owner: line.walletAddress,
-                  sale_kind: 0,
+                  sale_kind: SaleKind.FixedPrice,
                 })
               )
               .catch((e) => {
@@ -187,10 +188,12 @@ module.exports = {
       return e;
     }
   },
+
   async nfts(ctx) {
     const nfts = await strapi.services.nfts.find(ctx.query);
     return nfts;
   },
+
   async nftsList() {
     return await strapi.services.nfts.find();
   },
