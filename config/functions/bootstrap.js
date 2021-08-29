@@ -29,6 +29,9 @@ module.exports = () => {
     socket.on("newCollection", () => {
       console.log("event from client");
     });
+    socket.on("userCreatedNewFixedSell", (data) => {
+      strapi.serverBroadCastNewFixedSell(data);
+    });
     socket.on("newERC721Created", () => {
       console.log("newERC721 event from client");
     });
@@ -36,12 +39,14 @@ module.exports = () => {
 
   strapi.io = io;
 
-  strapi.emitNewCollection = (collection) => {
-    console.log("Collection Create Event Emited");
-    io.emit("newCollection", collection);
+  strapi.serverBroadCastNewFixedSell = (fixed) => {
+    io.emit("serverBroadCaseNewFixedPriceSell", fixed);
+  };
+  strapi.serverBroadCastNewCollection = (collection) => {
+    io.emit("serverBroadCastNewCollection", collection);
   };
   strapi.emitNewERC721 = (collection) => {
-    console.log("Collection Create Event Emited");
+    console.log("ERC721 Create Event Emited");
     io.emit("newERC721", collection);
   };
 };

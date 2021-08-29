@@ -60,7 +60,7 @@ module.exports = {
     entity = await strapi.services.collections.create(data, {
       files,
     });
-    strapi.emitNewCollection(entity, {
+    strapi.serverBroadCastNewCollection(entity, {
       model: strapi.query("collections").model,
     });
     return sanitizeEntity(entity, { model: strapi.query("collections").model });

@@ -1,4 +1,6 @@
 "use strict";
+const Web3 = require("web3");
+const { OpenSeaPort, Network } = require("opensea-js");
 const seaport = strapi.config.functions.openSeaApi.seaport();
 const OrderSide = "opensea-js/lib/types";
 const bluebird = require("bluebird");
@@ -97,15 +99,21 @@ module.exports = {
         talents,
         async (line) => {
           try {
-            let { orders } = await bluebird.delay(2000).return(
-              seaport.api.getOrders({
-                owner: line.walletAddress,
-                is_expired: false,
-                sale_kind: 1,
-              })
-            );
-            if (orders && orders != null && orders.length > 0) {
+            let { orders } = await bluebird
+              .delay(4000)
+              .return(
+                seaport.api.getOrders({
+                  owner: line.walletAddress,
+                  sale_kind: 1,
+                })
+              )
+              .catch((e) => {
+                console.error(e.message);
+              });
+            if (orders.length > 0) {
               auctions = [...auctions, ...orders];
+            } else {
+              console.log("no result");
             }
           } catch (e) {
             console.log("error in auction ", e);
@@ -118,8 +126,44 @@ module.exports = {
     } catch (e) {
       console.log("error in all auction ", e);
     }
-    return auctions;
   },
+
+  async findFixed(ctx) {
+    const talents = await strapi.services.talents.find();
+    let fixed = [];
+    try {
+      await bluebird.map(
+        talents,
+        async (line) => {
+          try {
+            let { orders } = await bluebird
+              .delay(3000)
+              .return(
+                seaport.api.getOrders({
+                  owner: line.walletAddress,
+                  sale_kind: 0,
+                })
+              )
+              .catch((e) => {
+                console.error(e.message);
+              });
+            if (orders && orders != null && orders.length > 0) {
+              fixed = [...fixed, ...orders];
+            }
+          } catch (e) {
+            console.log("error in auction ", e);
+          }
+        },
+        { concurrency: 1 }
+      );
+
+      return fixed;
+    } catch (e) {
+      console.log("error in all auction ", e);
+    }
+    return fixed;
+  },
+
   async getBundledOrder(ctx) {
     try {
       const { maker, slug } = ctx.params;
