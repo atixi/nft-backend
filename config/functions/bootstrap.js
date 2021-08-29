@@ -17,7 +17,7 @@ module.exports = () => {
       origin: "*",
       methods: ["GET", "POST"],
       allowedHeaders: ["my-custom-header"],
-      credentials: true,
+      credentials: false,
     },
   });
 
