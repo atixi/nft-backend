@@ -899,6 +899,13 @@
           "talentAddress": {
             "type": "string"
           },
+          "isEnternal": {
+            "type": "boolean",
+            "default": true
+          },
+          "metadata": {
+            "type": "object"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -927,6 +934,13 @@
           },
           "talentAddress": {
             "type": "string"
+          },
+          "isEnternal": {
+            "type": "boolean",
+            "default": true
+          },
+          "metadata": {
+            "type": "object"
           },
           "published_at": {
             "type": "string",

@@ -204,7 +204,9 @@ module.exports = {
     entity = await strapi.services.nfts.create(data, {
       files,
     });
-    strapi.emitNewERC721(entity, { model: strapi.query("nfts").model });
+    strapi.serverBroadCastNewERC721(entity, {
+      model: strapi.query("nfts").model,
+    });
     return sanitizeEntity(entity, { model: strapi.query("nfts").model });
   },
 };

@@ -56,6 +56,13 @@
     },
     "talentAddress": {
       "type": "string"
+    },
+    "isEnternal": {
+      "type": "boolean",
+      "default": true
+    },
+    "metadata": {
+      "type": "json"
     }
   }
 }
