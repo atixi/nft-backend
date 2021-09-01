@@ -45,8 +45,8 @@ module.exports = () => {
   strapi.serverBroadCastNewCollection = (collection) => {
     io.emit("serverBroadCastNewCollection", collection);
   };
-  strapi.emitNewERC721 = (collection) => {
+  strapi.serverBroadCastNewERC721 = (collection) => {
     console.log("ERC721 Create Event Emited");
-    io.emit("newERC721", collection);
+    io.emit("serverBroadCastNewERC721", collection);
   };
 };
