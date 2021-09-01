@@ -37,6 +37,7 @@ module.exports = {
         contractAddress: item.contractAddress,
         talentAddress: item.talentAddress,
         slug: item.slug,
+        isEnternal: item.isEnternal,
       };
     });
     return collections;

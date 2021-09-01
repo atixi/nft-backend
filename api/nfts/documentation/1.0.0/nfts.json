@@ -884,6 +884,9 @@
               "talentAddress": {
                 "type": "string"
               },
+              "isEnternal": {
+                "type": "boolean"
+              },
               "published_at": {
                 "type": "string"
               },
