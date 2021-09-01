@@ -718,6 +718,9 @@
                 "isEnternal": {
                   "type": "boolean"
                 },
+                "metadata": {
+                  "type": "object"
+                },
                 "published_at": {
                   "type": "string"
                 },

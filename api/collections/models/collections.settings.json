@@ -60,6 +60,9 @@
     "isEnternal": {
       "type": "boolean",
       "default": true
+    },
+    "metadata": {
+      "type": "json"
     }
   }
 }
