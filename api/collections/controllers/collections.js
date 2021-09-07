@@ -11,7 +11,7 @@ module.exports = {
     const { offset } = ctx.query;
     try {
       const { assets } = await seaport.api.getAssets({
-        owner: entity.talent.walletAddress
+        owner: entity.talent.walletAddress,
         collection: slug,
         limit: 10,
         offset: offset,
