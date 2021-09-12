@@ -142,7 +142,7 @@ module.exports = {
               .return(
                 seaport.api.getOrders({
                   owner: line.walletAddress,
-                  sale_kind: SaleKind.DutchAuction,
+                  sale_kind: SaleKind.FixedPrice,
                 })
               )
               .catch((e) => {
