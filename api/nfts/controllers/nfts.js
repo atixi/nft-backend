@@ -5,7 +5,7 @@ const seaport = strapi.config.functions.openSeaApi.seaport();
 const OrderSide = "opensea-js/lib/types";
 const bluebird = require("bluebird");
 const { parseMultipartData, sanitizeEntity } = require("strapi-utils/lib");
-const { SaleKind } = require("opensea-js/lib/types");
+const { SaleKind, WyvernSchemaName } = require("opensea-js/lib/types");
 
 const getAssetsByOwner = (owner) => {
   return seaport.api.getAssets({
@@ -39,7 +39,7 @@ const getAllAssets = async () => {
         talents,
         async (line) => {
           try {
-            let { assets } = await bluebird.delay(1000).return(
+            let { assets } = await bluebird.delay(500).return(
               seaport.api
                 .getAssets({
                   owner: line.walletAddress,
@@ -101,7 +101,7 @@ module.exports = {
         async (line) => {
           try {
             let { orders } = await bluebird
-              .delay(1000)
+              .delay(500)
               .return(
                 seaport.api.getOrders({
                   owner: line.walletAddress,
@@ -122,7 +122,9 @@ module.exports = {
         },
         { concurrency: 1 }
       );
-
+      auctions = auctions.filter((item) => {
+        return item.asset.assetContract.schemaName == WyvernSchemaName.ERC721;
+      });
       return auctions;
     } catch (e) {
       console.log("error in all auction ", e);
@@ -138,7 +140,7 @@ module.exports = {
         async (line) => {
           try {
             let { orders } = await bluebird
-              .delay(1000)
+              .delay(500)
               .return(
                 seaport.api.getOrders({
                   owner: line.walletAddress,
@@ -157,7 +159,9 @@ module.exports = {
         },
         { concurrency: 1 }
       );
-
+      fixed = fixed.filter((item) => {
+        return item.asset.assetContract.schemaName == WyvernSchemaName.ERC721;
+      });
       return fixed;
     } catch (e) {
       console.log("error in all auction ", e);
